@@ -53,7 +53,7 @@ public class walkThroughScreen extends AppCompatActivity {
                 if (onboardingViewPager.getCurrentItem() + 1 < onboardingAdapter.getItemCount()){
                     onboardingViewPager.setCurrentItem(onboardingViewPager.getCurrentItem() + 1);
                 }else {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), login.class));
                     finish();
 
 //                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
