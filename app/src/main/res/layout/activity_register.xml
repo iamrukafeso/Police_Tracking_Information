@@ -94,8 +94,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
         android:background="@drawable/bg_input"
-        android:hint="Enter Email"
-        android:inputType="textEmailAddress"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
         android:paddingLeft="54dp"
         android:textColor="#000"
         android:textColorHint="#000"
@@ -103,10 +103,102 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/regEditText3" />
+    <EditText
+        android:id="@+id/regEditText5"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/bg_input"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:paddingLeft="54dp"
+        android:textColor="#000"
+        android:textColorHint="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regEditText4" />
 
+    <Spinner
+        android:id="@+id/accTypeSpinner"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/bg_input"
+        android:paddingLeft="54dp"
+        android:textColor="#000"
+        android:textColorHint="#000"
 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regEditText5" />
 
+<!--    android:entries="array/types"-->
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accTypeSpinner">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="Gender: "
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Male"
+            android:textSize="16dp" />
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Female"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Other"
+            android:textSize="16sp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/regBtn"
+        android:layout_width="158dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/bg_btn_primary"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:textColor="#80744B"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

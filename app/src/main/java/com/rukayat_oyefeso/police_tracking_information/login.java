@@ -2,7 +2,9 @@ package com.rukayat_oyefeso.police_tracking_information;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -14,7 +16,7 @@ public class login extends AppCompatActivity {
 
     ImageView imageView, loginImg, PassImg;
     Animation smalltobig, btta, btta2;
-    TextView textView, subtitle_header;
+    TextView textView, subtitle_header, regText;
     Button button;
     EditText editText, editText2;
 
@@ -32,6 +34,7 @@ public class login extends AppCompatActivity {
         loginImg = findViewById(R.id.imageView2);
         PassImg = findViewById(R.id.imageView3);
 
+        regText = findViewById(R.id.regTextView);
         textView = findViewById(R.id.textView);
         subtitle_header = findViewById(R.id.subtitle_header);
 
@@ -39,7 +42,6 @@ public class login extends AppCompatActivity {
 
         editText = findViewById(R.id.editText);
         editText2 = findViewById(R.id.editText2);
-
 
 
         // passing animation and start it
@@ -54,5 +56,13 @@ public class login extends AppCompatActivity {
         editText2.startAnimation(btta2);
         loginImg.startAnimation(btta2);
         PassImg.startAnimation(btta2);
+
+        regText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent regIntent = new Intent(login.this,Register.class);
+                startActivity(regIntent);
+            }
+        });
     }
 }
