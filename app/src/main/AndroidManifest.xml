@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".policeRegisterForm"></activity>
+        <activity android:name=".policeForm"></activity>
+        <activity android:name=".VehicleOwnerForm" />
+        <activity android:name=".forgetPassword" />
+        <activity android:name=".policeRegisterForm" />
         <activity android:name=".UserRegisterForm" />
         <activity android:name=".Register" />
         <activity android:name=".login" />

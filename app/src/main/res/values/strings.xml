@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Police_Tracking_Information</string>
+
+    //Different account type option for Private vehicle owner and police
+    <string-array name="userTypes">
+        <item>Select Account Type</item>
+        <item>Vehicle Owner</item>
+        <item>Police</item>
+    </string-array>
 </resources>

@@ -16,7 +16,7 @@ public class login extends AppCompatActivity {
 
     ImageView imageView, loginImg, PassImg;
     Animation smalltobig, btta, btta2;
-    TextView textView, subtitle_header, regText;
+    TextView textView, subtitle_header, regText, fp;
     Button button;
     EditText editText, editText2;
 
@@ -42,6 +42,7 @@ public class login extends AppCompatActivity {
 
         editText = findViewById(R.id.editText);
         editText2 = findViewById(R.id.editText2);
+        fp = findViewById(R.id.forgetPass);
 
 
         // passing animation and start it
@@ -62,6 +63,22 @@ public class login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent regIntent = new Intent(login.this,Register.class);
                 startActivity(regIntent);
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent regBtn = new Intent(login.this,MainActivity.class);
+                startActivity(regBtn);
+            }
+        });
+
+        fp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forText = new Intent(login.this,forgetPassword.class);
+                startActivity(forText);
             }
         });
     }

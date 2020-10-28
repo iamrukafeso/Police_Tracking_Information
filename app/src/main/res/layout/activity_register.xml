@@ -24,7 +24,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
-        android:text="Register To PTI"
+        android:text="Create An Account With PTI"
         android:textColor="#666666"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,13 +32,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/Reg"
+        android:layout_width="188dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="60dp"
+        android:text="Register"
+        android:textAllCaps="true"
+        android:textColor="#FFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regTextView" />
+
     <EditText
         android:id="@+id/regEditText"
         android:layout_width="343dp"
         android:layout_height="54dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/bg_input"
         android:hint="Enter Full Name"
         android:inputType="text"
@@ -46,17 +58,15 @@
         android:textColor="#000000"
         android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/Reg" />
 
     <EditText
         android:id="@+id/regEditText2"
-        android:layout_width="0dp"
+        android:layout_width="339dp"
         android:layout_height="50dp"
-        android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="36dp"
         android:background="@drawable/bg_input"
         android:hint="Enter Username"
         android:inputType="text"
@@ -64,7 +74,7 @@
         android:textColor="#000"
         android:textColorHint="#000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/regEditText" />
 
@@ -103,6 +113,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/regEditText3" />
+
     <EditText
         android:id="@+id/regEditText5"
         android:layout_width="0dp"
@@ -130,15 +141,14 @@
         android:layout_marginEnd="36dp"
         android:background="@drawable/bg_input"
         android:paddingLeft="54dp"
+        android:entries="@array/userTypes"
         android:textColor="#000"
         android:textColorHint="#000"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/regEditText5" />
 
-<!--    android:entries="array/types"-->
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
@@ -184,21 +194,91 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/regBtn"
-        android:layout_width="158dp"
-        android:layout_height="49dp"
+        android:id="@+id/regNextBtn"
+        android:layout_width="124dp"
+        android:layout_height="51dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
         android:background="@drawable/bg_btn_primary"
-        android:text="Register"
-        android:textAllCaps="false"
-        android:textColor="#80744B"
+        android:text="next"
+        android:textAllCaps="true"
+        android:textColor="#FFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/regEditText"
+        app:layout_constraintEnd_toEndOf="@+id/regEditText"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="@+id/regEditText"
+        app:layout_constraintTop_toTopOf="@+id/regEditText"
+        app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/regEditText2"
+        app:layout_constraintEnd_toEndOf="@+id/regEditText2"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="@+id/regEditText2"
+        app:layout_constraintTop_toTopOf="@+id/regEditText2"
+        app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/regEditText3"
+        app:layout_constraintEnd_toEndOf="@+id/regEditText3"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="@+id/regEditText3"
+        app:layout_constraintTop_toTopOf="@+id/regEditText3"
+        app:layout_constraintVertical_bias="0.461"
+        app:srcCompat="@drawable/ic_baseline_email_24" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/regEditText4"
+        app:layout_constraintEnd_toEndOf="@+id/regEditText4"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="@+id/regEditText4"
+        app:layout_constraintTop_toTopOf="@+id/regEditText4"
+        app:layout_constraintVertical_bias="0.538"
+        app:srcCompat="@drawable/ic_baseline_lock_24" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/regEditText5"
+        app:layout_constraintEnd_toEndOf="@+id/regEditText5"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="@+id/regEditText5"
+        app:layout_constraintTop_toTopOf="@+id/regEditText5"
+        app:layout_constraintVertical_bias="0.538"
+        app:srcCompat="@drawable/ic_baseline_lock_24" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/accTypeSpinner"
+        app:layout_constraintEnd_toEndOf="@+id/accTypeSpinner"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="@+id/accTypeSpinner"
+        app:layout_constraintTop_toTopOf="@+id/accTypeSpinner"
+        app:layout_constraintVertical_bias="0.461"
+        app:srcCompat="@drawable/ic_baseline_supervised_user_circle_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
