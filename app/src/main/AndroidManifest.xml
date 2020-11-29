@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rukayat_oyefeso.police_tracking_information">
 
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +15,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".policeForm"></activity>
+
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="ocr" />
+
+        <activity android:name=".TextRecognizer"></activity>
+        <activity android:name=".SetNewPassword" />
+        <activity android:name=".PoliceActivity" />
+        <activity android:name=".policeForm" />
         <activity android:name=".VehicleOwnerForm" />
         <activity android:name=".forgetPassword" />
-        <activity android:name=".policeRegisterForm" />
         <activity android:name=".UserRegisterForm" />
         <activity android:name=".Register" />
         <activity android:name=".login" />

@@ -122,8 +122,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
         android:background="@drawable/bg_input"
-        android:hint="Confirm Password"
-        android:inputType="textPassword"
+        android:hint="Enter Date of Birth"
+        android:inputType="date"
         android:paddingLeft="54dp"
         android:textColor="#000"
         android:textColorHint="#000"
@@ -219,7 +219,8 @@
         app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="@+id/regEditText"
         app:layout_constraintTop_toTopOf="@+id/regEditText"
-        app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+        app:srcCompat="@drawable/ic_baseline_account_circle_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -230,7 +231,8 @@
         app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="@+id/regEditText2"
         app:layout_constraintTop_toTopOf="@+id/regEditText2"
-        app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+        app:srcCompat="@drawable/ic_baseline_account_circle_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -242,7 +244,8 @@
         app:layout_constraintStart_toStartOf="@+id/regEditText3"
         app:layout_constraintTop_toTopOf="@+id/regEditText3"
         app:layout_constraintVertical_bias="0.461"
-        app:srcCompat="@drawable/ic_baseline_email_24" />
+        app:srcCompat="@drawable/ic_baseline_email_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -254,7 +257,8 @@
         app:layout_constraintStart_toStartOf="@+id/regEditText4"
         app:layout_constraintTop_toTopOf="@+id/regEditText4"
         app:layout_constraintVertical_bias="0.538"
-        app:srcCompat="@drawable/ic_baseline_lock_24" />
+        app:srcCompat="@drawable/ic_baseline_lock_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -266,7 +270,8 @@
         app:layout_constraintStart_toStartOf="@+id/regEditText5"
         app:layout_constraintTop_toTopOf="@+id/regEditText5"
         app:layout_constraintVertical_bias="0.538"
-        app:srcCompat="@drawable/ic_baseline_lock_24" />
+        app:srcCompat="@drawable/ic_baseline_date_range_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -278,7 +283,8 @@
         app:layout_constraintStart_toStartOf="@+id/accTypeSpinner"
         app:layout_constraintTop_toTopOf="@+id/accTypeSpinner"
         app:layout_constraintVertical_bias="0.461"
-        app:srcCompat="@drawable/ic_baseline_supervised_user_circle_24" />
+        app:srcCompat="@drawable/ic_baseline_supervised_user_circle_24"
+        tools:ignore="VectorDrawableCompat" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

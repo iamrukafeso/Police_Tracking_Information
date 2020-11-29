@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "254055802664",
+    "firebase_url": "https://policetrackinginfromation.firebaseio.com",
+    "project_id": "policetrackinginfromation",
+    "storage_bucket": "policetrackinginfromation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254055802664:android:8e86c2049adf923ec3d21d",
+        "android_client_info": {
+          "package_name": "com.rukayat_oyefeso.police_tracking_information"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254055802664-mgj0qjr4m92qdg5igq279u8s6mu208g3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgt3N65M83pswVMITUXsshYQ0OZvEguFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254055802664-mgj0qjr4m92qdg5igq279u8s6mu208g3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

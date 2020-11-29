@@ -1,5 +1,6 @@
 package com.rukayat_oyefeso.police_tracking_information;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class login extends AppCompatActivity {
 
@@ -19,6 +26,7 @@ public class login extends AppCompatActivity {
     TextView textView, subtitle_header, regText, fp;
     Button button;
     EditText editText, editText2;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +38,7 @@ public class login extends AppCompatActivity {
         btta = AnimationUtils.loadAnimation(this, R.anim.btta);
         btta2 = AnimationUtils.loadAnimation(this, R.anim.btta2);
 
+        mAuth = FirebaseAuth.getInstance();
         imageView = findViewById(R.id.imageView);
         loginImg = findViewById(R.id.imageView2);
         PassImg = findViewById(R.id.imageView3);
@@ -69,8 +78,21 @@ public class login extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent regBtn = new Intent(login.this,MainActivity.class);
-                startActivity(regBtn);
+                String em = editText.getText().toString();
+                String pass = editText2.getText().toString();
+                mAuth.signInWithEmailAndPassword(em,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Intent regBtn = new Intent(login.this,TextRecognizer.class);
+                            startActivity(regBtn);
+                        }
+                        else {
+                            Toast.makeText(login.this, "Invalid details", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
             }
         });
 
