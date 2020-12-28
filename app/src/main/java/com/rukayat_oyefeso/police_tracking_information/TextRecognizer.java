@@ -2,12 +2,14 @@ package com.rukayat_oyefeso.police_tracking_information;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +27,7 @@ import java.util.List;
 public class TextRecognizer extends AppCompatActivity {
 
     private ImageButton snapBtn;
-    private ImageButton detectBtn;
+    private Button detectBtn;
     private ImageView imageView;
     private TextView txtView;
     private Bitmap imageBitmap;
@@ -65,7 +67,7 @@ public class TextRecognizer extends AppCompatActivity {
 
     //Retrieves the image and displays it in an ImageView
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
@@ -102,5 +104,4 @@ public class TextRecognizer extends AppCompatActivity {
             txtView.setText(txt);
         }
     }
-
 }

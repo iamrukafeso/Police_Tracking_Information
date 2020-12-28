@@ -84,7 +84,7 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Intent regBtn = new Intent(login.this,TextRecognizer.class);
+                            Intent regBtn = new Intent(login.this, MainActivity.class);
                             startActivity(regBtn);
                         }
                         else {

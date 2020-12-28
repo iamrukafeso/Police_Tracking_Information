@@ -10,6 +10,10 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -18,33 +22,125 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Initialize variable
+    DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        //Assign variable
+        drawerLayout = findViewById(R.id.drawer_layout);
+    }
 
-        findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
+    public void ClickMenu(View view){
+        //open drawer
+        openDrawer(drawerLayout);
+    }
+
+    private static void openDrawer(DrawerLayout drawerLayout) {
+        //Open drawer layout
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    public void ClickLogo(View view){
+        //Close drawer
+        closeDrawer(drawerLayout);
+    }
+
+    private static void closeDrawer(DrawerLayout drawerLayout) {
+        //close drawer layout
+        //check condition
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            //When drawer is open
+            //close drawer
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+
+    public void ClickHome(View view){
+        //Recreate activity
+        recreate();
+    }
+
+    public void ClickUserProfile(View view){
+        //Redirect activity to userprofile
+        redirectActivity(this, UserProfile.class);
+    }
+
+    public void ClickDetectText(View view){
+        //Redirect activity to detect text
+        redirectActivity(this, TextRecognizer.class);
+    }
+
+    public void ClickCrimeNews(View view){
+        //Redirect activity to crime news
+        redirectActivity(this, CrimeNews.class);
+    }
+
+    public void ClickSettings(View view){
+        //Redirect activity to settings activity
+        redirectActivity(this, Settings.class);
+    }
+
+    public void ClickAbout(View view){
+        //Redirect activity to about
+        redirectActivity(this, About.class);
+    }
+
+    public void ClickHelp(View view){
+        //Redirect activity to help
+        redirectActivity(this, Help.class);
+    }
+
+    public void ClickLogOut(View view){
+        //Redirect activity to log out
+        logout(this);
+    }
+
+    private static void logout(final Activity activity){
+        //Initialize alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        //Set title
+        builder.setTitle("Logout");
+        //Set message
+        builder.setMessage("Are you sure you want to logout ?");
+        //positive yes button
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
+            public void onClick(DialogInterface dialog, int which) {
+                //Finish activity
+                activity.finishAffinity();
+                //Exit app
+                System.exit(0);
             }
         });
-
-        NavigationView navigationView = findViewById(R.id.navigationView);
-        navigationView.setItemIconTintList(null);
-
-        NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
-        NavigationUI.setupWithNavController(navigationView, navController);
-
-        final TextView textTitle = findViewById(R.id.textTitle);
-
-        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+        //Negative no button
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             @Override
-            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                textTitle.setText(destination.getLabel());
+            public void onClick(DialogInterface dialog, int which) {
+                //Dismiss dialog
+                dialog.dismiss();
             }
         });
+        //show dialog
+        builder.show();
+    }
+
+    private static void redirectActivity(Activity activity, Class aClass) {
+        //Initialize intent
+        Intent intent = new Intent(activity, aClass);
+        //set flag
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //start activity
+        activity.startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Close drawer
+        closeDrawer(drawerLayout);
     }
 }
