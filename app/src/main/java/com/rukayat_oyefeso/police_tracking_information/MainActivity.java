@@ -3,6 +3,7 @@ package com.rukayat_oyefeso.police_tracking_information;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -16,6 +17,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Initialize variable
     DrawerLayout drawerLayout;
+    Switch switchNightMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,37 @@ public class MainActivity extends AppCompatActivity {
 
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
+        switchNightMode = findViewById(R.id.switchNightMode);
+
+        int currentMode = AppCompatDelegate.getDefaultNightMode();
+
+        if (currentMode == AppCompatDelegate.MODE_NIGHT_YES){
+            switchNightMode.setChecked(true);
+        } else {
+            switchNightMode.setChecked(false);
+        }
+
+        switchNightMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    restartCurrentActivity();
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    restartCurrentActivity();
+                }
+            }
+        });
+
+    }
+
+    //night mode
+    private void restartCurrentActivity(){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     public void ClickMenu(View view){

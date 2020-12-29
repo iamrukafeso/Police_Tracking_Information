@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".TextRecognizer"
-    android:id="@+id/drawerLayout">
+    android:id="@+id/drawer_layout">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
             android:layout_gravity="center"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#636363"/>
+            android:textColor="@color/colorTextPrimary"/>
 
         <ImageView
             android:id="@+id/imageView"
@@ -41,6 +42,7 @@
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:textColor="@color/colorTextPrimary"
             android:layout_marginBottom="90dp" />
 
         <ImageButton
@@ -59,7 +61,6 @@
             android:layout_marginStart="100sp"
             android:layout_marginRight="40dp"
             android:text="Detect Reg Number" />
-
     </LinearLayout>
 
     <RelativeLayout
@@ -71,5 +72,5 @@
         <include
             layout="@layout/main_nav_drawer"/>
     </RelativeLayout>
-    
+
 </androidx.drawerlayout.widget.DrawerLayout>

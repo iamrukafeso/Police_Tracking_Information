@@ -38,6 +38,7 @@
         <activity android:name=".login" />
         <activity android:name=".walkThroughScreen" />
         <activity android:name=".SplashScreen">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

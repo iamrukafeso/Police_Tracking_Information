@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,14 +21,14 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textColor="#636363"/>
+        android:textColor="@color/colorTextPrimary"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:background="#636363"/>
+        android:textColor="#000000"/>
 
 
         <LinearLayout
@@ -42,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Home"
+                android:textColor="@color/colorTextPrimary"
                 android:padding="12dp"
                 android:layout_marginStart="16dp"/>
 
@@ -50,7 +52,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="48dp"
                 android:src="@drawable/ic_baseline_home_24"/>
-
         </LinearLayout>
 
     <LinearLayout
@@ -66,6 +67,7 @@
             android:layout_weight="1"
             android:text="User Profile"
             android:padding="12dp"
+            android:textColor="@color/colorTextPrimary"
             android:layout_marginStart="16dp"/>
 
         <ImageView
@@ -80,6 +82,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:textColor="#636363"
         android:onClick="ClickDetectText">
 
         <TextView
@@ -88,6 +91,7 @@
             android:layout_weight="1"
             android:text="Detect Reg Number / Scanner"
             android:padding="12dp"
+            android:textColor="@color/colorTextPrimary"
             android:layout_marginStart="16dp"/>
 
         <ImageView
@@ -110,6 +114,7 @@
             android:layout_weight="1"
             android:text="Crime News"
             android:padding="12dp"
+            android:textColor="@color/colorTextPrimary"
             android:layout_marginStart="16dp"/>
 
         <ImageView
@@ -131,6 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Settings"
+            android:textColor="@color/colorTextPrimary"
             android:padding="12dp"
             android:layout_marginStart="16dp"/>
 
@@ -154,6 +160,7 @@
             android:layout_weight="1"
             android:text="About Us"
             android:padding="12dp"
+            android:textColor="@color/colorTextPrimary"
             android:layout_marginStart="16dp"/>
 
         <ImageView
@@ -176,6 +183,7 @@
             android:layout_weight="1"
             android:text="Help &amp; Feedback"
             android:padding="12dp"
+            android:textColor="@color/colorTextPrimary"
             android:layout_marginStart="16dp"/>
 
         <ImageView
@@ -183,6 +191,31 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
             android:src="@drawable/ic_support_agent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickDarkMode">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Light &amp; Dark Mode"
+            android:padding="12dp"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_marginStart="16dp"/>
+
+        <Switch
+            android:id="@+id/switchNightMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="39dp"
+            />
+
     </LinearLayout>
 
     <LinearLayout
@@ -198,6 +231,7 @@
             android:layout_weight="1"
             android:text="Log Out"
             android:padding="12dp"
+            android:textColor="@color/colorTextPrimary"
             android:layout_marginStart="16dp"/>
 
         <ImageView
