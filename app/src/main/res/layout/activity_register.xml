@@ -68,7 +68,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_input"
-        android:hint="Enter Username"
+        android:hint="Enter Surname"
         android:inputType="text"
         android:paddingLeft="54dp"
         android:textColor="#000"
@@ -149,50 +149,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/regEditText5" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15sp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accTypeSpinner">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:text="Gender: "
-            android:textSize="16sp" />
-
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Male"
-            android:textSize="16dp" />
-
-        <RadioButton
-            android:id="@+id/radioButton1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Female"
-            android:textSize="16sp" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Other"
-            android:textSize="16sp" />
-
-    </RadioGroup>
-
     <Button
         android:id="@+id/regNextBtn"
         android:layout_width="124dp"
@@ -208,7 +164,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/accTypeSpinner" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -286,5 +242,19 @@
         app:srcCompat="@drawable/ic_baseline_supervised_user_circle_24"
         tools:ignore="VectorDrawableCompat" />
 
+    <TextView
+        android:id="@+id/loginBtn"
+        android:layout_width="337dp"
+        android:layout_height="29dp"
+        android:onClick="onClickTo"
+        android:text="ALREADY A MEMBER?  LOGIN"
+        android:textColor="@color/colorAccent"
+        android:textSize="50px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regNextBtn"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

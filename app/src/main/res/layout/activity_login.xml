@@ -115,7 +115,7 @@
         android:id="@+id/loginBtn"
         android:layout_width="151dp"
         android:layout_height="47dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/bg_btn_primary"
         android:text="logIn"
         android:textAllCaps="true"
@@ -124,7 +124,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/forgetPass" />
 
     <TextView
         android:id="@+id/regTextView"
@@ -137,19 +137,20 @@
         android:textColor="@color/colorAccent"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/forgetPass"
         app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
     <TextView
         android:id="@+id/forgetPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="28dp"
         android:text="Forgot Password"
         android:textAllCaps="true"
         android:textColor="#FFFF"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/regTextView"
-        app:layout_constraintHorizontal_bias="0.348"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
@@ -179,5 +180,21 @@
         app:srcCompat="@drawable/ic_baseline_lock_24"
         tools:ignore="VectorDrawableCompat" />
 
+
+    <TextView
+        android:id="@+id/regTextView"
+        android:layout_width="337dp"
+        android:layout_height="29dp"
+        android:onClick="onClick"
+        android:text="NOT A MEMBER? REGISTER NOW"
+        android:textColor="@color/colorAccent"
+        android:textSize="50px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
+        app:layout_constraintVertical_bias="0.968"
+        tools:ignore="DuplicateIds" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -62,12 +62,12 @@
         android:id="@+id/button2"
         android:layout_width="238dp"
         android:layout_height="60dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="Complete Registration"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintHorizontal_bias="0.867"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/currentLoc" />
 
     <EditText
         android:id="@+id/editTextNumber"
@@ -87,8 +87,8 @@
 
     <ImageView
         android:id="@+id/imageView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="22dp"
+        android:layout_height="23dp"
         app:layout_constraintBottom_toBottomOf="@+id/editTextNumber"
         app:layout_constraintEnd_toEndOf="@+id/editTextNumber"
         app:layout_constraintHorizontal_bias="0.056"
@@ -98,34 +98,34 @@
         app:srcCompat="@drawable/ic_baseline_directions_car_24"
         tools:ignore="VectorDrawableCompat" />
 
-    <EditText
-        android:id="@+id/editTextNumber2"
-        android:layout_width="359dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_input"
-        android:ems="10"
-        android:hint="Enter Driver's Registration Number"
-        android:inputType="number"
-        android:paddingLeft="54dp"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+<!--    <EditText-->
+<!--        android:id="@+id/editTextNumber2"-->
+<!--        android:layout_width="359dp"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="@drawable/bg_input"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Enter Driver's Registration Number"-->
+<!--        android:inputType="number"-->
+<!--        android:paddingLeft="54dp"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textColorHint="#000000"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />-->
 
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNumber2"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNumber2"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="@+id/editTextNumber2"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumber2"
-        app:layout_constraintVertical_bias="0.476"
-        app:srcCompat="@drawable/ic_baseline_directions_car_24"
-        tools:ignore="VectorDrawableCompat" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView14"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/editTextNumber2"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/editTextNumber2"-->
+<!--        app:layout_constraintHorizontal_bias="0.05"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/editTextNumber2"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/editTextNumber2"-->
+<!--        app:layout_constraintVertical_bias="0.476"-->
+<!--        app:srcCompat="@drawable/ic_baseline_directions_car_24"-->
+<!--        tools:ignore="VectorDrawableCompat" />-->
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -141,7 +141,7 @@
         android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
 
     <ImageView
         android:id="@+id/imageView15"
@@ -153,7 +153,8 @@
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
         app:layout_constraintVertical_bias="0.38"
-        app:srcCompat="@drawable/ic_baseline_apartment_24" />
+        app:srcCompat="@drawable/ic_baseline_apartment_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <EditText
         android:id="@+id/editTextDate"
@@ -181,7 +182,8 @@
         app:layout_constraintStart_toStartOf="@+id/editTextDate"
         app:layout_constraintTop_toTopOf="@+id/editTextDate"
         app:layout_constraintVertical_bias="0.533"
-        app:srcCompat="@drawable/ic_baseline_date_range_24" />
+        app:srcCompat="@drawable/ic_baseline_date_range_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <EditText
         android:id="@+id/editTextDate2"
@@ -198,6 +200,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextDate2"
+        app:layout_constraintEnd_toEndOf="@+id/editTextDate2"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="@+id/editTextDate2"
+        app:layout_constraintTop_toTopOf="@+id/editTextDate2"
+        app:layout_constraintVertical_bias="0.533"
+        app:srcCompat="@drawable/ic_baseline_date_range_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <EditText
         android:id="@+id/editTextDate3"
@@ -216,6 +231,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate2" />
 
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextDate3"
+        app:layout_constraintEnd_toEndOf="@+id/editTextDate3"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="@+id/editTextDate3"
+        app:layout_constraintTop_toTopOf="@+id/editTextDate3"
+        app:layout_constraintVertical_bias="0.466"
+        app:srcCompat="@drawable/ic_baseline_date_range_24"
+        tools:ignore="VectorDrawableCompat" />
+
     <EditText
         android:id="@+id/editTextTextPostalAddress"
         android:layout_width="365dp"
@@ -231,5 +259,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate3" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPostalAddress"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPostalAddress"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPostalAddress"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPostalAddress"
+        app:layout_constraintVertical_bias="0.483"
+        app:srcCompat="@drawable/ic_baseline_location_on_24"
+        tools:ignore="VectorDrawableCompat" />
+
+    <Button
+        android:id="@+id/currentLoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Get my current location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.862"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

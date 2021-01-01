@@ -31,9 +31,9 @@ import java.util.HashMap;
 
 public class Register extends AppCompatActivity {
 
-    EditText name, user, email, pass, dateOfBirth;
-    Spinner spinner;
-    Button nextBtn;
+    private EditText name, user, email, pass, dateOfBirth;
+    private Spinner spinner;
+    private Button nextBtn;
 
     private FirebaseAuth mAuth;
 
@@ -71,8 +71,8 @@ public class Register extends AppCompatActivity {
         mProgDialog = new ProgressDialog(this);
 
         //move to different activity when you select either Police or user
-        ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.userTypes, R.layout.support_simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+//        ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.userTypes, R.layout.support_simple_spinner_dropdown_item);
+//        spinner.setAdapter(adapter);
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,33 +89,7 @@ public class Register extends AppCompatActivity {
             }
         });
 
-//        nextBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String item = accountType.getSelectedItem().toString();
-//                if (item.equals("Vehicle Owner")){
-//                    Intent intent = new Intent(Register.this, VehicleOwnerForm.class);
-//                    startActivity(intent);
-//                }
-//                else if (item.equals("Police")){
-//                    Intent intent2 = new Intent(Register.this, policeForm.class);
-//                    startActivity(intent2);
-//                }
-//            }
-//        });
-
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-      //  if (mAuth.)
-    }
-
-    //    public void onClick(View v){
-//
-//    }
 
     private void registerUser() {
         mProgDialog.setTitle("Registration Process ");
@@ -123,23 +97,23 @@ public class Register extends AppCompatActivity {
         mProgDialog.setCanceledOnTouchOutside(false);
         mProgDialog.show();
 
-        final String fullName = name.getText().toString().trim();
-        final String userName = user.getText().toString().trim();
+        mFirstName = name.getText().toString().trim();
+        mSurname = user.getText().toString().trim();
         final String UserEmail = email.getText().toString().trim();
         final String password = pass.getText().toString().trim();
-        final String dateBirth = dateOfBirth.getText().toString().trim();
-        String spinnerType = spinner.getSelectedItem().toString();
+        mDob = dateOfBirth.getText().toString().trim();
+        mAccountType = spinner.getSelectedItem().toString();
 
 //        mAccountType = spinner.getSelectedItem().toString();
 
 
-        if (fullName.isEmpty()) {
+        if (mFirstName.isEmpty()) {
             mProgDialog.hide();
             name.setError("Full name is required");
             name.requestFocus();
-        } else if (userName.isEmpty()) {
+        } else if (mSurname.isEmpty()) {
             mProgDialog.hide();
-            user.setError("Please give a username");
+            user.setError("Please give a surname");
             user.requestFocus();
         } else if (UserEmail.isEmpty()) {
             mProgDialog.hide();
@@ -153,7 +127,7 @@ public class Register extends AppCompatActivity {
             mProgDialog.hide();
             pass.setError("Password is required");
             pass.requestFocus();
-        } else if (dateBirth.isEmpty()) {
+        } else if (mDob.isEmpty()) {
             mProgDialog.hide();
             dateOfBirth.setError("Date of birth is required");
             dateOfBirth.requestFocus();
@@ -161,23 +135,10 @@ public class Register extends AppCompatActivity {
             mProgDialog.hide();
             pass.setError("Min password length should be 6 characters");
             pass.requestFocus();
-        } else if (spinnerType.equals("Select")) {
+        } else if (mAccountType.equals("Select")) {
             mProgDialog.hide();
             Toast.makeText(this, "Please select account type", Toast.LENGTH_LONG).show();
         }
-//        else{
-//            mAuth.createUserWithEmailAndPassword(UserEmail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                @Override
-//                public void onComplete(@NonNull Task<AuthResult> task) {
-//
-//                    if(task.isSuccessful()){
-//                        Intent mainIntent = new Intent(Register.this,PoliceActivity.class);
-//                        startActivity(mainIntent);
-//                        finish();
-//                    }
-//                }
-//            });
-//        }
 
         //if it's not empty insert data into database
         else {
@@ -197,10 +158,10 @@ public class Register extends AppCompatActivity {
 
                                 //use HashMaps for string key value pairs
                                 HashMap<String, String> userHashMap = new HashMap<>();
-                                userHashMap.put("fullname", fullName);
-                                userHashMap.put("username", userName);
-                                userHashMap.put("dateofbirth", dateBirth);
-                                userHashMap.put("accounttype", mAccountType);
+                                userHashMap.put("Full Name", mFirstName);
+                                userHashMap.put("username", mSurname);
+                                userHashMap.put("Date of Birth", mDob);
+                                userHashMap.put("Spinner Type", mAccountType);
                                 userHashMap.put("fillForm", "false");
                                 userHashMap.put("image", "default-image");
 
@@ -299,10 +260,10 @@ public class Register extends AppCompatActivity {
             datePickerDialog.show();
         }
 
-//    public void onClickTo(View view)
-//    {
-//        Intent intent = new Intent(Register.this, login.class);
-//        startActivity(intent);
-//
-//    }
+    public void onClickTo(View view)
+    {
+        Intent intent = new Intent(Register.this, login.class);
+        startActivity(intent);
+
+    }
 }
