@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Logout"></activity>
+        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".Logout" />
         <activity android:name=".Help" />
         <activity android:name=".About" />
         <activity android:name=".CrimeNews" />
@@ -30,6 +31,10 @@
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="ocr" />
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDQEfXd7t0kTt65fQoqDr4ZvIYIeamFb7A" />
+
         <activity android:name=".TextRecognizer" />
         <activity android:name=".SetNewPassword" />
         <activity android:name=".policeForm" />
@@ -39,7 +44,6 @@
         <activity android:name=".login" />
         <activity android:name=".walkThroughScreen" />
         <activity android:name=".SplashScreen">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

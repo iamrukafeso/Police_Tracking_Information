@@ -108,10 +108,16 @@ public class MainActivity extends AppCompatActivity {
         //Redirect activity to detect text
         redirectActivity(this, TextRecognizer.class);
     }
+    //ClickMaps
 
     public void ClickCrimeNews(View view){
         //Redirect activity to crime news
         redirectActivity(this, CrimeNews.class);
+    }
+
+    public void ClickMaps(View view){
+        //Redirect activity to crime news
+        redirectActivity(this, MapActivity.class);
     }
 
     public void ClickSettings(View view){
