@@ -24,7 +24,7 @@
         <activity android:name=".About" />
         <activity android:name=".CrimeNews" />
         <activity android:name=".Settings" />
-        <activity android:name=".UserProfile" />
+        <activity android:name=".policeProfile" />
         <activity android:name=".searchData" />
 
         <meta-data

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -180,7 +179,7 @@ public class TextRecognizer extends AppCompatActivity {
 
     public void ClickUserProfile(View view){
         //Redirect activity to userprofile
-        redirectActivity(this, UserProfile.class);
+        redirectActivity(this, policeProfile.class);
     }
 
     public void ClickDetectText(View view){

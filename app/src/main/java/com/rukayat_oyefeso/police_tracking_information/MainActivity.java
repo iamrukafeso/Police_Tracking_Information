@@ -1,27 +1,21 @@
 package com.rukayat_oyefeso.police_tracking_information;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CompoundButton;
-import android.widget.Switch;
-import android.widget.TextView;
 
-import com.google.android.material.navigation.NavigationView;
+import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,12 +23,15 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Switch switchNightMode;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
 
-        //Assign variable
+        //Assign variable for night or dark mode
         drawerLayout = findViewById(R.id.drawer_layout);
         switchNightMode = findViewById(R.id.switchNightMode);
 
@@ -58,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
 
     }
 
@@ -101,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void ClickUserProfile(View view){
         //Redirect activity to userprofile
-        redirectActivity(this, UserProfile.class);
+        redirectActivity(this, policeProfile.class);
     }
 
     public void ClickDetectText(View view){

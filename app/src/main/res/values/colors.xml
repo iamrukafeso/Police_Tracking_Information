@@ -4,14 +4,12 @@
     <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorAccent">#FF5252</color>
     <color name="colorTextPrimary">#212121</color>
-    <color name="colorTextSecondary">#757575</color>
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorOnboardingIndicatorInactive">#72BCF7</color>
 
     <color name="black">#000000</color>
-    <color name="grey">#B6B6B6</color>
-    <color name="lightGreen">#02C39A</color>
 
-    <color name="UIblue">#39374D</color>
-    <color name="blue">#4337B5</color>
+    //body and background
+    <color name="banner_background">#F6CA34</color>
+    <color name="banner_background_light">#FBE79D</color>
 </resources>
