@@ -8,5 +8,7 @@
         <item>Vehicle Owner</item>
         <item>Police</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="copy_right" translatable="false">Copyrights %1$d By Rukayat Oyefeso</string>
+<!---->
 </resources>

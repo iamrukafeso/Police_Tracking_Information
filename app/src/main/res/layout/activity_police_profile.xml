@@ -65,6 +65,7 @@
                 android:id="@+id/police_FirstName"
                 android:layout_width="143dp"
                 android:layout_height="38dp"
+                android:textColor="@color/colorTextPrimary"
                 android:text="First Name:"
                 android:textSize="18sp" />
 
@@ -82,6 +83,7 @@
                 android:id="@+id/police_FirstNameEdit"
                 android:layout_width="240dp"
                 android:layout_height="50sp"
+                android:textColor="@color/colorTextPrimary"
                 android:inputType="textPersonName"
                 android:text="Name" />
 
@@ -110,6 +112,7 @@
                     android:id="@+id/police_Surname"
                     android:layout_width="143dp"
                     android:layout_height="38dp"
+                    android:textColor="@color/colorTextPrimary"
                     android:text="Surname:"
                     android:textSize="18sp" />
 
@@ -128,6 +131,7 @@
                     android:layout_width="240dp"
                     android:layout_height="50sp"
                     android:inputType="textPersonName"
+                    android:textColor="@color/colorTextPrimary"
                     android:text="Surname" />
 
             </LinearLayout>
@@ -156,6 +160,7 @@
                     android:layout_width="143dp"
                     android:layout_height="38dp"
                     android:text="Badge Number"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -173,6 +178,7 @@
                     android:layout_width="240dp"
                     android:layout_height="50sp"
                     android:inputType="number"
+                    android:textColor="@color/colorTextPrimary"
                     android:text="Badge Number" />
 
             </LinearLayout>
@@ -200,6 +206,7 @@
                     android:id="@+id/police_Address"
                     android:layout_width="143dp"
                     android:layout_height="38dp"
+                    android:textColor="@color/colorTextPrimary"
                     android:text="Address:"
                     android:textSize="18sp" />
 
@@ -218,6 +225,7 @@
                     android:layout_width="240dp"
                     android:layout_height="100sp"
                     android:inputType="textPersonName"
+                    android:textColor="@color/colorTextPrimary"
                     android:text="Address" />
 
             </LinearLayout>
