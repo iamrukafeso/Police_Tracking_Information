@@ -1,5 +1,6 @@
 package com.rukayat_oyefeso.police_tracking_information;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
@@ -15,13 +16,32 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
 
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
     //Initialize variable
     DrawerLayout drawerLayout;
     Switch switchNightMode;
+
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    private String userID;
+
+    RelativeLayout mSearchUsers;
 
 
     @Override
@@ -30,6 +50,63 @@ public class MainActivity extends AppCompatActivity {
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main);
+
+        //welcome
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+//        userID = user.getUid();
+
+        final TextView greetingTextView = findViewById(R.id.displayName);
+
+        Query query = reference.orderByChild("email").equalTo(user.getEmail());
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()){
+
+                    //get data
+                    String name = ""+ ds.child("name").getValue();
+                    //set data
+                    greetingTextView.setText("Welcome, " + name + "!" );
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+//        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                User
+//                Register policeUsersProfile = snapshot.getValue(Register.class);
+//
+//                if (policeUsersProfile != null){
+//                    String name = policeUsersProfile.mFirstName;
+//
+//                    greetingTextView.setText("Welcome, " + name + "!" );
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                Toast.makeText(MainActivity.this, "Something wrong happened!", Toast.LENGTH_LONG).show();
+//            }
+//        });
+
+        //Relative Layouts in main Activity
+        mSearchUsers = findViewById(R.id.searchUser);
+
+        mSearchUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent searchIntent = new Intent(MainActivity.this,searchData.class);
+                startActivity(searchIntent);
+            }
+        });
 
         //Assign variable for night or dark mode
         drawerLayout = findViewById(R.id.drawer_layout);

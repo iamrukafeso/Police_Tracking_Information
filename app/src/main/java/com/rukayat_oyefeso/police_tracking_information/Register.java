@@ -158,10 +158,10 @@ public class Register extends AppCompatActivity {
 
                                 //use HashMaps for string key value pairs
                                 HashMap<String, String> userHashMap = new HashMap<>();
-                                userHashMap.put("Full Name", mFirstName);
-                                userHashMap.put("username", mSurname);
+                                userHashMap.put("First Name", mFirstName);
+                                userHashMap.put("Surname", mSurname);
                                 userHashMap.put("Date of Birth", mDob);
-                                userHashMap.put("Spinner Type", mAccountType);
+                                userHashMap.put("Account Type", mAccountType);
                                 userHashMap.put("fillForm", "false");
                                 userHashMap.put("image", "default-image");
 
@@ -172,6 +172,7 @@ public class Register extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
+
 
                                                 final FirebaseUser user = mAuth.getCurrentUser();
                                                 assert user != null;
@@ -206,7 +207,6 @@ public class Register extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
 
-//
                                                 final FirebaseUser user = mAuth.getCurrentUser();
                                                 user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override

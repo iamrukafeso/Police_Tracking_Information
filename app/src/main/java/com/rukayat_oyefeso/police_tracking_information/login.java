@@ -94,6 +94,8 @@ public class login extends AppCompatActivity {
             public void onClick(View v) {
 //                String em = mEmailEdit.getText().toString();
 //                String pass = mPassEdit.getText().toString();
+//                SessionManager sessionManager = new SessionManager(login.this);
+//                sessionManager.createLoginSession(mEmailEdit, mPassEdit);
                 loginProcess();
 //                mAuth.signInWithEmailAndPassword(em,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 //                    @Override
@@ -154,7 +156,7 @@ public class login extends AppCompatActivity {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                                String accountType = dataSnapshot.child("Spinner Type").getValue().toString();
+                                String accountType = dataSnapshot.child("Account Type").getValue().toString();
                                 Log.i("accountType", accountType);
                                 String fillForm = dataSnapshot.child("fillForm").getValue().toString();
                                 Log.i("fillForm", fillForm);
