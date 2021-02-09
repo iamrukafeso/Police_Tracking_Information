@@ -166,7 +166,7 @@ public class policeProfile extends AppCompatActivity {
                                 mUpdateBtn.setEnabled(false);
 
                                 if (!mProfileImage.equals("default")) {
-                                    Picasso.with(getApplicationContext()).load(image).placeholder(R.drawable.ic_profile).into(mProfileImage);
+                                    Picasso.get().load(image).placeholder(R.drawable.ic_profile).into(mProfileImage);
                                 }
 
                                 mPoliceFormRef.child(mPoliceId).addValueEventListener(new ValueEventListener() {
@@ -222,7 +222,7 @@ public class policeProfile extends AppCompatActivity {
                             mUpdateBtn.setEnabled(false);
 
                             if (!mProfileImage.equals("default")) {
-                                Picasso.with(getApplicationContext()).load(image).placeholder(R.drawable.ic_profile).into(mProfileImage);
+                                Picasso.get().load(image).placeholder(R.drawable.ic_profile).into(mProfileImage);
                             }
 
                             mPoliceFormRef.child(userId).addValueEventListener(new ValueEventListener() {

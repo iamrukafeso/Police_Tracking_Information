@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
 
-    RelativeLayout mSearchUsers;
+    RelativeLayout mScanReg, mSearchUsers, mCrimeMain, mTrackMain;
 
 
     @Override
@@ -98,12 +98,38 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         //Relative Layouts in main Activity
-        mSearchUsers = findViewById(R.id.searchUser);
+        mScanReg = findViewById(R.id.scannReg);
+        mScanReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent scanIntent = new Intent(MainActivity.this,TextRecognizer.class);
+                startActivity(scanIntent);
+            }
+        });
 
+        mSearchUsers = findViewById(R.id.searchUser);
         mSearchUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent searchIntent = new Intent(MainActivity.this,searchData.class);
+                startActivity(searchIntent);
+            }
+        });
+
+        mCrimeMain = findViewById(R.id.crimeMain);
+        mCrimeMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent crimeIntent = new Intent(MainActivity.this,CrimeNews.class);
+                startActivity(crimeIntent);
+            }
+        });
+
+        mTrackMain = findViewById(R.id.trackMain);
+        mTrackMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent searchIntent = new Intent(MainActivity.this,MapActivity.class);
                 startActivity(searchIntent);
             }
         });

@@ -12,4 +12,7 @@
     //body and background
     <color name="banner_background">#F6CA34</color>
     <color name="banner_background_light">#FBE79D</color>
+
+    <color name="colorTextSubtitle">#4e4e4e</color>
+    <color name="colorTextTitle">#262626</color>
 </resources>
