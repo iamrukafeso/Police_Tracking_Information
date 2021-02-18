@@ -1,11 +1,5 @@
 package com.rukayat_oyefeso.police_tracking_information;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -22,8 +16,15 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
@@ -41,10 +42,15 @@ public class TextRecognizer extends AppCompatActivity {
     private Bitmap imageBitmap;
     DrawerLayout drawerLayout;
     Switch switchNightMode;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mAuth = FirebaseAuth.getInstance();
+
         setContentView(R.layout.activity_text_recognizer);
         snapBtn = findViewById(R.id.snapBtn);
         detectBtn = findViewById(R.id.detectBtn);
@@ -212,7 +218,7 @@ public class TextRecognizer extends AppCompatActivity {
         logout(this);
     }
 
-    private static void logout(final Activity activity){
+    private void logout(final Activity activity){
         //Initialize alert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         //Set title
@@ -223,10 +229,14 @@ public class TextRecognizer extends AppCompatActivity {
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //Finish activity
-                activity.finishAffinity();
-                //Exit app
-                System.exit(0);
+//                //Finish activity
+//                activity.finishAffinity();
+//                //Exit app
+//                System.exit(0);
+                mAuth.signOut();
+                Intent homeIntent = new Intent(getApplicationContext(),login.class);
+                startActivity(homeIntent);
+                finish();
             }
         });
         //Negative no button

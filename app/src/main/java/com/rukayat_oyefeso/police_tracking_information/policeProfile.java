@@ -1,13 +1,5 @@
 package com.rukayat_oyefeso.police_tracking_information;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -18,13 +10,19 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -132,7 +130,7 @@ public class policeProfile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                String mAccountType = dataSnapshot.child("Account Type").getValue().toString();
+                String mAccountType = dataSnapshot.child("accountType").getValue().toString();
 
                 if(mAccountType.equals("Vehicle Owner")) {
 
@@ -141,8 +139,8 @@ public class policeProfile extends AppCompatActivity {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                                String firstName = dataSnapshot.child("Full Name").getValue().toString();
-                                String surname = dataSnapshot.child("Surname").getValue().toString();
+                                String firstName = dataSnapshot.child("firstName").getValue().toString();
+                                String surname = dataSnapshot.child("surname").getValue().toString();
 //                                String mail = dataSnapshot.child("Email").getValue().toString();
                                 String image = dataSnapshot.child("image").getValue().toString();
 
@@ -206,8 +204,8 @@ public class policeProfile extends AppCompatActivity {
 
 
 
-                            String firstName = dataSnapshot.child("First Name").getValue().toString();
-                            String surname = dataSnapshot.child("Surname").getValue().toString();
+                            String firstName = dataSnapshot.child("firstName").getValue().toString();
+                            String surname = dataSnapshot.child("surname").getValue().toString();
 //                            String mail = dataSnapshot.child("Email").getValue().toString();
                             String image = dataSnapshot.child("image").getValue().toString();
 
@@ -525,7 +523,7 @@ public class policeProfile extends AppCompatActivity {
         logout(this);
     }
 
-    private static void logout(final Activity activity){
+    private void logout(final Activity activity){
         //Initialize alert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         //Set title
@@ -536,10 +534,15 @@ public class policeProfile extends AppCompatActivity {
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //Finish activity
-                activity.finishAffinity();
-                //Exit app
-                System.exit(0);
+//                //Finish activity
+//                activity.finishAffinity();
+//                //Exit app
+//                System.exit(0);
+
+                mAuth.signOut();
+                Intent homeIntent = new Intent(getApplicationContext(),login.class);
+                startActivity(homeIntent);
+                finish();
             }
         });
         //Negative no button

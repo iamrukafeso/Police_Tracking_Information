@@ -1,22 +1,25 @@
 package com.rukayat_oyefeso.police_tracking_information;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-
-import android.view.Gravity;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Calendar;
+
 import mehdi.sakout.aboutpage.AboutPage;
 import mehdi.sakout.aboutpage.Element;
 
@@ -24,11 +27,14 @@ public class About extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     Switch switchNightMode;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+        mAuth = FirebaseAuth.getInstance();
 
         //Assign variable for night or dark mode
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -164,7 +170,7 @@ public class About extends AppCompatActivity {
         logout(this);
     }
 
-    private static void logout(final Activity activity){
+    private void logout(final Activity activity){
         //Initialize alert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         //Set title
@@ -175,10 +181,14 @@ public class About extends AppCompatActivity {
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //Finish activity
-                activity.finishAffinity();
-                //Exit app
-                System.exit(0);
+//                //Finish activity
+//                activity.finishAffinity();
+//                //Exit app
+//                System.exit(0);
+                mAuth.signOut();
+                Intent homeIntent = new Intent(getApplicationContext(),login.class);
+                startActivity(homeIntent);
+                finish();
             }
         });
         //Negative no button

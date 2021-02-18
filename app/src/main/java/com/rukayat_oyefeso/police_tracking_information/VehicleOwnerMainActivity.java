@@ -19,23 +19,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
-public class MainActivity extends AppCompatActivity {
+public class VehicleOwnerMainActivity extends AppCompatActivity {
 
     //Initialize variable
     DrawerLayout drawerLayout;
     Switch switchNightMode;
 
-//    private DatabaseReference mUserDatabase;
-    private FirebaseAuth mAuth;
-//    private String mCurrentUserId;
-//    private FirebaseRecyclerAdapter adapter;
-//    private Query chatQuery;
-
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
+    private FirebaseAuth mAuth;
 
-    RelativeLayout mScanReg, mSearchUsers, mCrimeMain, mTrackMain;
+    RelativeLayout mPayFine, mPunishments, mCrimeMain, mProfile;
 
 
     @Override
@@ -43,11 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_vehicle_owner_main);
         mAuth = FirebaseAuth.getInstance();
-//        mCurrentUserId = mAuth.getCurrentUser().getUid();
-//        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
         //welcome
 //        user = FirebaseAuth.getInstance().getCurrentUser();
@@ -63,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 //                for (DataSnapshot ds : snapshot.getChildren()){
 //
 //                    //get data
-//                    String name = ""+ ds.child("name").getValue();
+//                    String name = ""+ ds.child("firstName").getValue();
 //                    //set data
 //                    greetingTextView.setText("Welcome, " + name + "!" );
 //                }
@@ -96,21 +88,21 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         //Relative Layouts in main Activity
-        mScanReg = findViewById(R.id.scannReg);
-        mScanReg.setOnClickListener(new View.OnClickListener() {
+        mPayFine = findViewById(R.id.payFines);
+        mPayFine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent scanIntent = new Intent(MainActivity.this,TextRecognizer.class);
-                startActivity(scanIntent);
+                Intent fineIntent = new Intent(VehicleOwnerMainActivity.this,PayFine.class);
+                startActivity(fineIntent);
             }
         });
 
-        mSearchUsers = findViewById(R.id.searchUser);
-        mSearchUsers.setOnClickListener(new View.OnClickListener() {
+        mPunishments = findViewById(R.id.punishment);
+        mPunishments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent searchIntent = new Intent(MainActivity.this,searchData.class);
-                startActivity(searchIntent);
+                Intent punIntent = new Intent(VehicleOwnerMainActivity.this,Punishments.class);
+                startActivity(punIntent);
             }
         });
 
@@ -118,17 +110,17 @@ public class MainActivity extends AppCompatActivity {
         mCrimeMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent crimeIntent = new Intent(MainActivity.this,CrimeNews.class);
+                Intent crimeIntent = new Intent(VehicleOwnerMainActivity.this,CrimeNews.class);
                 startActivity(crimeIntent);
             }
         });
 
-        mTrackMain = findViewById(R.id.trackMain);
-        mTrackMain.setOnClickListener(new View.OnClickListener() {
+        mProfile = findViewById(R.id.profile);
+        mProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent searchIntent = new Intent(MainActivity.this,MapActivity.class);
-                startActivity(searchIntent);
+                Intent vehicleIntent = new Intent(VehicleOwnerMainActivity.this,vehicleOwnerProfile.class);
+                startActivity(vehicleIntent);
             }
         });
 
@@ -156,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
 
     }
 
@@ -193,48 +184,48 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void ClickHome(View view){
+    public void ClickVehicleHome(View view){
         //Recreate activity
         recreate();
     }
 
-    public void ClickUserProfile(View view){
+    public void ClickVehicleUserProfile(View view){
         //Redirect activity to userprofile
-        redirectActivity(this, policeProfile.class);
+        redirectActivity(this, vehicleOwnerProfile.class);
     }
 
-    public void ClickDetectText(View view){
-        //Redirect activity to detect text
-        redirectActivity(this, TextRecognizer.class);
-    }
+//    public void ClickDetectText(View view){
+//        //Redirect activity to detect text
+//        redirectActivity(this, TextRecognizer.class);
+//    }
     //ClickMaps
 
-    public void ClickCrimeNews(View view){
+    public void ClickVehicleCrimeNews(View view){
         //Redirect activity to crime news
         redirectActivity(this, CrimeNews.class);
     }
 
-    public void ClickMaps(View view){
-        //Redirect activity to crime news
-        redirectActivity(this, MapActivity.class);
-    }
+//    public void ClickMaps(View view){
+//        //Redirect activity to crime news
+//        redirectActivity(this, MapActivity.class);
+//    }
 
-    public void ClickSettings(View view){
+    public void ClickVehicleSettings(View view){
         //Redirect activity to settings activity
         redirectActivity(this, Settings.class);
     }
 
-    public void ClickAbout(View view){
+    public void ClickVehicleAbout(View view){
         //Redirect activity to about
         redirectActivity(this, About.class);
     }
 
-    public void ClickHelp(View view){
+    public void ClickVehicleHelp(View view){
         //Redirect activity to help
         redirectActivity(this, Help.class);
     }
 
-    public void ClickLogOut(View view){
+    public void ClickVehicleLogOut(View view){
         //Redirect activity to log out
         logout(this);
     }
@@ -250,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //Finish activity
+//                //Finish activity
 //                activity.finishAffinity();
 //                //Exit app
 //                System.exit(0);

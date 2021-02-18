@@ -1,13 +1,13 @@
 package com.rukayat_oyefeso.police_tracking_information;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,9 +46,6 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-//                Intent intent = new Intent(SlashScreenActivity.this, MainActivity.class);
-//                startActivity(intent);
-//                finish();
                 sendToMainActivities();
             }
         },SPLASH_SCREEN);
@@ -71,35 +68,30 @@ public class SplashScreen extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        String accType = dataSnapshot.child("Account Type").getValue().toString();
+                        String accType = dataSnapshot.child("accountType").getValue().toString();
                         String fillForm = dataSnapshot.child("fillForm").getValue().toString();
 
                         if (accType.equals("Vehicle Owner") && fillForm.equals("true")) {
-                            Intent patientIntent = new Intent(SplashScreen.this, MainActivity.class);
-                            startActivity(patientIntent);
+                            Intent vehicleIntent = new Intent(SplashScreen.this, VehicleOwnerMainActivity.class);
+                            startActivity(vehicleIntent);
                             finish();
                         } else if (accType.equals("Police") && fillForm.equals("true")) {
-                            Intent doctPatient = new Intent(SplashScreen.this, MainActivity.class);
-                            startActivity(doctPatient);
+                            Intent policeIntent = new Intent(SplashScreen.this, MainActivity.class);
+                            startActivity(policeIntent);
                             finish();
-
                         }
                         else{
                             Intent loginIntent = new Intent(SplashScreen.this, login.class);
                             startActivity(loginIntent);
                             finish();
                         }
-
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 }
             });
         }
-
-
     }
 }

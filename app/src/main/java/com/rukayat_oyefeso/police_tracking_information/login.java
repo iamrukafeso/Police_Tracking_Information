@@ -1,8 +1,5 @@
 package com.rukayat_oyefeso.police_tracking_information;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -156,7 +156,7 @@ public class login extends AppCompatActivity {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                                String accountType = dataSnapshot.child("Account Type").getValue().toString();
+                                String accountType = dataSnapshot.child("accountType").getValue().toString();
                                 Log.i("accountType", accountType);
                                 String fillForm = dataSnapshot.child("fillForm").getValue().toString();
                                 Log.i("fillForm", fillForm);
@@ -180,8 +180,8 @@ public class login extends AppCompatActivity {
                                     else
                                     {
                                         mProgDialog.dismiss();
-                                        Intent vehicleOwnerIntent = new Intent(login.this, MainActivity.class);
-                                        startActivity(vehicleOwnerIntent);
+                                        Intent vehicleIntent = new Intent(login.this, VehicleOwnerMainActivity.class);
+                                        startActivity(vehicleIntent);
                                         finish();
                                     }
                                 }

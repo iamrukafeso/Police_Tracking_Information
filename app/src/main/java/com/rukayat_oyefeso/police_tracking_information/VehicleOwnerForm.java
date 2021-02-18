@@ -1,9 +1,5 @@
 package com.rukayat_oyefeso.police_tracking_information;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -19,6 +15,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -178,12 +178,12 @@ public class VehicleOwnerForm extends AppCompatActivity {
 
             //mVehicleReg, mInsuranceName, mInsuranceExpiryDate, mNCTValidDate, mRoadTaxValid,
             //    mAddress;
-            userUser.put("Vehicle Reg Number", userRegNum);
-            userUser.put("Insurance Name", insuranceName);
-            userUser.put("Insurance Expire Date", insuranceExpireDate);
-            userUser.put("NCT Valid Date", NCTValidDate);
-            userUser.put("Road Tax Valid Date", RoadTaxValid);
-            userUser.put("Vehicle Owner Address", userAddress);
+            userUser.put("vehicleRegNumber", userRegNum);
+            userUser.put("insuranceName", insuranceName);
+            userUser.put("insuranceExpireDate", insuranceExpireDate);
+            userUser.put("nctValidDate", NCTValidDate);
+            userUser.put("roadTaxValidDate", RoadTaxValid);
+            userUser.put("vehicleOwnerAddress", userAddress);
 
             mRef.child(user_id).setValue(userUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override

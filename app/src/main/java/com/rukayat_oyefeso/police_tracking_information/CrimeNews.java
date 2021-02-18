@@ -1,33 +1,24 @@
 package com.rukayat_oyefeso.police_tracking_information;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
-import android.widget.SearchView;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.rukayat_oyefeso.police_tracking_information.parameter.Articles;
 import com.rukayat_oyefeso.police_tracking_information.parameter.Headlines;
 
@@ -49,11 +40,15 @@ public class CrimeNews extends AppCompatActivity {
     List<Articles> articles=new ArrayList<>();
     DrawerLayout drawerLayout;
     Switch switchNightMode;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crime_news);
+
+        mAuth = FirebaseAuth.getInstance();
+
         recyclerView=(RecyclerView)findViewById(R.id.recyclerView);
         button=findViewById(R.id.refreshButton);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -201,7 +196,7 @@ public class CrimeNews extends AppCompatActivity {
         logout(this);
     }
 
-    private static void logout(final Activity activity){
+    private void logout(final Activity activity){
         //Initialize alert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         //Set title
@@ -212,10 +207,15 @@ public class CrimeNews extends AppCompatActivity {
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //Finish activity
-                activity.finishAffinity();
-                //Exit app
-                System.exit(0);
+//                //Finish activity
+//                activity.finishAffinity();
+//                //Exit app
+//                System.exit(0);
+
+                mAuth.signOut();
+                Intent homeIntent = new Intent(getApplicationContext(),login.class);
+                startActivity(homeIntent);
+                finish();
             }
         });
         //Negative no button

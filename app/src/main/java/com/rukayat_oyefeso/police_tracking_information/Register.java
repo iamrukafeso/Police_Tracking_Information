@@ -6,13 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -158,10 +156,10 @@ public class Register extends AppCompatActivity {
 
                                 //use HashMaps for string key value pairs
                                 HashMap<String, String> userHashMap = new HashMap<>();
-                                userHashMap.put("First Name", mFirstName);
-                                userHashMap.put("Surname", mSurname);
-                                userHashMap.put("Date of Birth", mDob);
-                                userHashMap.put("Account Type", mAccountType);
+                                userHashMap.put("firstName", mFirstName);
+                                userHashMap.put("surname", mSurname);
+                                userHashMap.put("dateOfBirth", mDob);
+                                userHashMap.put("accountType", mAccountType);
                                 userHashMap.put("fillForm", "false");
                                 userHashMap.put("image", "default-image");
 
