@@ -57,7 +57,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
         if(mCurrentUser == null) {
-            Intent intent = new Intent(SplashScreen.this, login.class);
+            Intent intent = new Intent(SplashScreen.this, walkThroughScreen.class);
             startActivity(intent);
             finish();
         }
@@ -72,11 +72,11 @@ public class SplashScreen extends AppCompatActivity {
                         String fillForm = dataSnapshot.child("fillForm").getValue().toString();
 
                         if (accType.equals("Vehicle Owner") && fillForm.equals("true")) {
-                            Intent vehicleIntent = new Intent(SplashScreen.this, VehicleOwnerMainActivity.class);
+                            Intent vehicleIntent = new Intent(SplashScreen.this, FingerPrintAuthentication.class);
                             startActivity(vehicleIntent);
                             finish();
                         } else if (accType.equals("Police") && fillForm.equals("true")) {
-                            Intent policeIntent = new Intent(SplashScreen.this, MainActivity.class);
+                            Intent policeIntent = new Intent(SplashScreen.this, FingerPrintAuthentication.class);
                             startActivity(policeIntent);
                             finish();
                         }

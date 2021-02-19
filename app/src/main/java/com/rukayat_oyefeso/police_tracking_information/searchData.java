@@ -78,9 +78,6 @@ public class searchData extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-
-
-
 //        mQuery = mUserDatabase.child("UserForm");
 //
 //        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<Users>()
@@ -123,7 +120,7 @@ public class searchData extends AppCompatActivity {
 
 
         DatabaseReference mDatabaseRef =FirebaseDatabase.getInstance().getReference("UserForm");
-        Query query=mDatabaseRef.orderByChild("vehicleRegNumber").equalTo(searchText);
+        Query query=mDatabaseRef.orderByChild("vehicleRegNumber").equalTo(searchText).startAt(searchText.toLowerCase()).endAt(searchText.toLowerCase()+ "\uf8ff");
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
