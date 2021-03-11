@@ -164,7 +164,7 @@ public class policeProfile extends AppCompatActivity {
                                 mUpdateBtn.setEnabled(false);
 
                                 if (!mProfileImage.equals("default")) {
-                                    Picasso.get().load(image).placeholder(R.drawable.ic_profile).into(mProfileImage);
+                                    Picasso.get().load(image).placeholder(R.drawable.ic_user_photo).into(mProfileImage);
                                 }
 
                                 mPoliceFormRef.child(mPoliceId).addValueEventListener(new ValueEventListener() {
@@ -220,7 +220,7 @@ public class policeProfile extends AppCompatActivity {
                             mUpdateBtn.setEnabled(false);
 
                             if (!mProfileImage.equals("default")) {
-                                Picasso.get().load(image).placeholder(R.drawable.ic_profile).into(mProfileImage);
+                                Picasso.get().load(image).placeholder(R.drawable.ic_user_photo).into(mProfileImage);
                             }
 
                             mPoliceFormRef.child(userId).addValueEventListener(new ValueEventListener() {
@@ -397,8 +397,9 @@ public class policeProfile extends AppCompatActivity {
                 else
                 {
                     HashMap<String,Object> userMap = new HashMap<>();
-                    userMap.put("firstname",firstName);
+
                     userMap.put("surname",surname);
+                    userMap.put("firstName",firstName);
 
                     mUserRef.child(userId).updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -408,8 +409,8 @@ public class policeProfile extends AppCompatActivity {
                                 HashMap<String,Object> doctMap = new HashMap<>();
 
 //                                doctMap.put("Email",email);
-                                doctMap.put("Badge Number",badgeNum);
-                                doctMap.put("Address",address);
+                                doctMap.put("Badgenumber",badgeNum);
+                                doctMap.put("location",address);
 
                                 mPoliceFormRef.child(userId).updateChildren(doctMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -498,10 +499,10 @@ public class policeProfile extends AppCompatActivity {
         redirectActivity(this, TextRecognizer.class);
     }
 
-    public void ClickCrimeNews(View view){
-        //Redirect activity to crime news
-        redirectActivity(this, CrimeNews.class);
-    }
+//    public void ClickCrimeNews(View view){
+//        //Redirect activity to crime news
+//        redirectActivity(this, CrimeNews.class);
+//    }
 
     public void ClickSettings(View view){
         //Redirect activity to settings activity
@@ -602,15 +603,11 @@ public class policeProfile extends AppCompatActivity {
                 mProgDialog.setCanceledOnTouchOutside(false);
                 mProgDialog.show();
 
-
                 Uri resultUri = result.getUri();
 
                 File thumb_filePath = new File(resultUri.getPath());
 
                 final String currentUserId = mAuth.getUid();
-
-
-
 
                 // store the image in firebase storage
                 final StorageReference filePath = mStorageRef.child("profile-images").child(currentUserId + ".jpg");
@@ -631,7 +628,8 @@ public class policeProfile extends AppCompatActivity {
                                     final String downloadUrl = uri.toString();
 
 
-                                    mUserRef.child("image").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    assert currentUserId != null;
+                                    mUserRef.child(currentUserId).child("image").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
@@ -645,23 +643,15 @@ public class policeProfile extends AppCompatActivity {
                                         }
                                     });
 
-
                                 }
-
-
                             });
-
 
                         }
                     }
                 });
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-
-
                 mProgDialog.hide();
                 Exception error = result.getError();
-
-
             }
 
         }

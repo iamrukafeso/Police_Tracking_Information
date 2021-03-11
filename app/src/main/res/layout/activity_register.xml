@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_blue_gradient"
+    android:background="@drawable/ic_finger_print_authentication_background"
     tools:context=".Register">
 
     <View
@@ -248,7 +248,7 @@
         android:layout_height="29dp"
         android:onClick="onClickTo"
         android:text="ALREADY A MEMBER?  LOGIN"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorBackground"
         android:textSize="50px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

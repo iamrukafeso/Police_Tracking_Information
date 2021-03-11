@@ -1,5 +1,6 @@
 package com.rukayat_oyefeso.police_tracking_information;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,7 +10,9 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
@@ -17,7 +20,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VehicleOwnerMainActivity extends AppCompatActivity {
 
@@ -25,74 +35,41 @@ public class VehicleOwnerMainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Switch switchNightMode;
 
-    private FirebaseUser user;
+    private TextView mFirstName, mLastName;
+    private CircleImageView mVehicleImage;
+
+//    private FirebaseUser user;
+//    private DatabaseReference reference;
+//    private String userID;
+    private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
     private DatabaseReference reference;
     private String userID;
-    private FirebaseAuth mAuth;
+    private DatabaseReference mUserRef, mVehicleFormRef, mVehicleRef;
 
     RelativeLayout mPayFine, mPunishments, mCrimeMain, mProfile;
 
-
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_vehicle_owner_main);
+
         mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
 
-        //welcome
-//        user = FirebaseAuth.getInstance().getCurrentUser();
-//        reference = FirebaseDatabase.getInstance().getReference("Users");
-//        userID = user.getUid();
-
-//        final TextView greetingTextView = findViewById(R.id.displayName);
-//
-//        Query query = reference.orderByChild("email").equalTo(user.getEmail());
-//        query.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot ds : snapshot.getChildren()){
-//
-//                    //get data
-//                    String name = ""+ ds.child("firstName").getValue();
-//                    //set data
-//                    greetingTextView.setText("Welcome, " + name + "!" );
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
-
-//        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                User
-//                Register policeUsersProfile = snapshot.getValue(Register.class);
-//
-//                if (policeUsersProfile != null){
-//                    String name = policeUsersProfile.mFirstName;
-//
-//                    greetingTextView.setText("Welcome, " + name + "!" );
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Toast.makeText(MainActivity.this, "Something wrong happened!", Toast.LENGTH_LONG).show();
-//            }
-//        });
+        mFirstName = findViewById(R.id.displayVehicleName);
+        mLastName = findViewById(R.id.displayVehicleLastName);
+        mVehicleImage = findViewById(R.id.vehicle_MainProfile);
 
         //Relative Layouts in main Activity
         mPayFine = findViewById(R.id.payFines);
         mPayFine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent fineIntent = new Intent(VehicleOwnerMainActivity.this,PayFine.class);
+                Intent fineIntent = new Intent(VehicleOwnerMainActivity.this,viewFine.class);
                 startActivity(fineIntent);
             }
         });
@@ -149,6 +126,36 @@ public class VehicleOwnerMainActivity extends AppCompatActivity {
             }
         });
 
+        reference = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        final String userId = mUser.getUid();
+        displayInfo(userId);
+
+    }
+
+    private void displayInfo(String userID) {
+
+        reference.child(userID).addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String name = snapshot.child("firstName").getValue().toString();
+                String lName = snapshot.child("surname").getValue().toString();
+                String img = snapshot.child("image").getValue().toString();
+
+                if (!mVehicleImage.equals("default")) {
+                    Picasso.get().load(img).placeholder(R.drawable.ic_user_photo).into(mVehicleImage);
+                }
+                mFirstName.setText(name + " ");
+                mLastName.setText(lName);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     //night mode
@@ -200,7 +207,7 @@ public class VehicleOwnerMainActivity extends AppCompatActivity {
 //    }
     //ClickMaps
 
-    public void ClickVehicleCrimeNews(View view){
+    public void ClickCrimeNews(View view){
         //Redirect activity to crime news
         redirectActivity(this, CrimeNews.class);
     }

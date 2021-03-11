@@ -5,7 +5,7 @@
         android:radius="6dp"/>
 
     <solid
-        android:color="#FF6E40"/>
+        android:color="#C640FF"/>
 
     <!-- Gray shadow. -->
     <item android:left="5dp" android:top="7dp">

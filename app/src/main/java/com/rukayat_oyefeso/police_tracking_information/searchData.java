@@ -3,12 +3,15 @@ package com.rukayat_oyefeso.police_tracking_information;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -28,19 +32,20 @@ public class searchData extends AppCompatActivity {
     private EditText mSearchField;
     private ImageButton mSearchBtn;
     private RecyclerView mResultList;
-
+    private String userID;
     private DatabaseReference mUserDatabase,mQuery;
     private ProgressDialog mProgressDialog;
 
     private TextView mUserReg,mUserInsurance,mUserInsDate;
-    private  ConstraintLayout constraintLayout;
+    private CircleImageView mImage;
+    private  ConstraintLayout constraintLayout, mGroupedList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_data);
 
-        mUserDatabase = FirebaseDatabase.getInstance().getReference();
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
         mUserReg  = findViewById(R.id.user_reg);
         mUserInsDate = findViewById(R.id.user_insuranceDate);
@@ -48,7 +53,7 @@ public class searchData extends AppCompatActivity {
 
         constraintLayout = findViewById(R.id.groupedList);
 
-
+        mImage = findViewById(R.id.user_imageSearch);
 
         mProgressDialog = new ProgressDialog(this);
 
@@ -65,10 +70,18 @@ public class searchData extends AppCompatActivity {
             public void onClick(View v) {
 
 //                Toast.makeText(searchData.this, "Search started", Toast.LENGTH_SHORT).show();
-
                 String searchText = mSearchField.getText().toString();
                 firebaseUserSearch(searchText);
+            }
+        });
 
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent clickUser = new Intent(searchData.this, DisplayUserInfo.class);
+                clickUser.putExtra("userID", userID);
+                startActivity(clickUser);
+                finish();
             }
         });
 
@@ -120,26 +133,51 @@ public class searchData extends AppCompatActivity {
 
 
         DatabaseReference mDatabaseRef =FirebaseDatabase.getInstance().getReference("UserForm");
-        Query query=mDatabaseRef.orderByChild("vehicleRegNumber").equalTo(searchText).startAt(searchText.toLowerCase()).endAt(searchText.toLowerCase()+ "\uf8ff");
+        Query query=mDatabaseRef.orderByChild("vehicleRegNumber").equalTo(searchText);
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot data:dataSnapshot.getChildren()){
-
+                    Log.i("User data", data.getKey());
+                    userID = data.getKey();
                     constraintLayout.setVisibility(View.VISIBLE);
                     Users models=data.getValue(Users.class);
                     String regNum=models.getVehicleRegNumber();
                     String insExpDate = models.getInsuranceExpireDate();
                     String insurance = models.getInsuranceName();
+//                    String UserImage = dataSnapshot.child("image").getValue().toString();
 
-                    mUserInsDate.setText(insExpDate);
-                    mUserInsurance.setText(insurance);
-                    mUserReg.setText(regNum);
+
+                    mUserDatabase.child(userID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                          String  UserImage = snapshot.child("image").getValue().toString();
+                            Log.i("User data333", UserImage);
+                            if(!mImage.equals("ic_user_photo")){
+                                Picasso.get().load(UserImage).placeholder(R.drawable.ic_user_photo).into(mImage);
+
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                    mUserInsDate.setText("Insurance Expiry Date: "+ insExpDate);
+                    mUserInsurance.setText("Insurance Name: "+insurance);
+                    mUserReg.setText("Car Registration: "+regNum);
+
+
                     mProgressDialog.hide();
 
 //                    Log.i("DataTest", latitude);
+
 
                 }
 

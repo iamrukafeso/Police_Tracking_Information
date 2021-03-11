@@ -65,10 +65,16 @@ public class About extends AppCompatActivity {
 
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .setDescription("PIT is a ....")
+                .setDescription("PIT researches how a system can improve the\n" +
+                                "immediacy of law enforcement, and how an integrated optical character can be\n" +
+                        "incorporated into the system using OCR scanners. Police Tracking\n" +
+                        "information is an android based application. Police will enter penalty\n" +
+                        "information and check the date of expiry of insurance, road tax, check\n" +
+                        "whether they are a provisional license or full license owner, and check\n" +
+                        "NCT validation")
                 .enableDarkMode(false)
                 .setImage(R.drawable.logo)
-                .addItem(new Element().setTitle("Version 2.0.0"))
+                .addItem(new Element().setTitle("Version 2.2.1"))
                 .addItem(adsElement)
                 .addGroup("Connect with us")
                 .addEmail("iamrukafeso@gmail.com")

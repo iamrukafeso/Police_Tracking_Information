@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
@@ -17,7 +19,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,16 +34,18 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Switch switchNightMode;
 
+    private TextView mFirstName, mLastName;
+    private CircleImageView mPoliceImage;
 //    private DatabaseReference mUserDatabase;
     private FirebaseAuth mAuth;
 //    private String mCurrentUserId;
 //    private FirebaseRecyclerAdapter adapter;
 //    private Query chatQuery;
-
+    private FirebaseUser mUser;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
-
+    private DatabaseReference mUserRef, mVehicleFormRef, mVehicleRef;
     RelativeLayout mScanReg, mSearchUsers, mCrimeMain, mTrackMain;
 
 
@@ -46,54 +57,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
-//        mCurrentUserId = mAuth.getCurrentUser().getUid();
-//        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        mUser = mAuth.getCurrentUser();
 
-        //welcome
-//        user = FirebaseAuth.getInstance().getCurrentUser();
-//        reference = FirebaseDatabase.getInstance().getReference("Users");
-//        userID = user.getUid();
-
-//        final TextView greetingTextView = findViewById(R.id.displayName);
-//
-//        Query query = reference.orderByChild("email").equalTo(user.getEmail());
-//        query.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot ds : snapshot.getChildren()){
-//
-//                    //get data
-//                    String name = ""+ ds.child("name").getValue();
-//                    //set data
-//                    greetingTextView.setText("Welcome, " + name + "!" );
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
-
-//        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                User
-//                Register policeUsersProfile = snapshot.getValue(Register.class);
-//
-//                if (policeUsersProfile != null){
-//                    String name = policeUsersProfile.mFirstName;
-//
-//                    greetingTextView.setText("Welcome, " + name + "!" );
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Toast.makeText(MainActivity.this, "Something wrong happened!", Toast.LENGTH_LONG).show();
-//            }
-//        });
+        mFirstName = findViewById(R.id.displayPoliceName);
+        mLastName = findViewById(R.id.displayPoliceLastName);
+        mPoliceImage = findViewById(R.id.police_MainProfile);
 
         //Relative Layouts in main Activity
         mScanReg = findViewById(R.id.scannReg);
@@ -113,15 +81,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(searchIntent);
             }
         });
-
-        mCrimeMain = findViewById(R.id.crimeMain);
-        mCrimeMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent crimeIntent = new Intent(MainActivity.this,CrimeNews.class);
-                startActivity(crimeIntent);
-            }
-        });
+//
+//        mCrimeMain = findViewById(R.id.crimeMain);
+//        mCrimeMain.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent crimeIntent = new Intent(MainActivity.this,CrimeNews.class);
+//                startActivity(crimeIntent);
+//            }
+//        });
 
         mTrackMain = findViewById(R.id.trackMain);
         mTrackMain.setOnClickListener(new View.OnClickListener() {
@@ -156,8 +124,51 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        mVehicleFormRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
+        final String userId = mUser.getUid();
+        displayInfo(userId);
 
+    }
+
+    private void displayInfo(String userID) {
+
+        mVehicleFormRef.child(userID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String name = snapshot.child("firstName").getValue().toString();
+                String lName = snapshot.child("surname").getValue().toString();
+                String img = snapshot.child("image").getValue().toString();
+
+                if (!mPoliceImage.equals("default")) {
+                    Picasso.get().load(img).placeholder(R.drawable.ic_user_photo).into(mPoliceImage);
+                }
+                mFirstName.setText(name + " ");
+                mLastName.setText(lName);
+
+//                mUserRef.child(userID).addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        String img = snapshot.child("image").getValue().toString();
+//
+//                        if (!mPoliceImage.equals("default")) {
+//                            Picasso.get().load(img).placeholder(R.drawable.ic_user_photo).into(mPoliceImage);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     //night mode
@@ -209,10 +220,10 @@ public class MainActivity extends AppCompatActivity {
     }
     //ClickMaps
 
-    public void ClickCrimeNews(View view){
-        //Redirect activity to crime news
-        redirectActivity(this, CrimeNews.class);
-    }
+//    public void ClickCrimeNews(View view){
+//        //Redirect activity to crime news
+//        redirectActivity(this, CrimeNews.class);
+//    }
 
     public void ClickMaps(View view){
         //Redirect activity to crime news

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_blue_gradient"
+    android:background="@drawable/ic_finger_print_authentication_background"
     tools:context=".policeForm">
 
     <View

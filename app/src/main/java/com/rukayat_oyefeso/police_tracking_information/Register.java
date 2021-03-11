@@ -34,7 +34,6 @@ public class Register extends AppCompatActivity {
     private Button nextBtn;
 
     private FirebaseAuth mAuth;
-
     private DatabaseReference mRef,mUserRef;
 
     private ProgressDialog mProgDialog;
@@ -63,7 +62,6 @@ public class Register extends AppCompatActivity {
         nextBtn = findViewById(R.id.regNextBtn);
 
         mAuth = FirebaseAuth.getInstance();
-
         mRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
         mProgDialog = new ProgressDialog(this);

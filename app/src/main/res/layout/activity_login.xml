@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_blue_gradient"
+    android:background="@drawable/ic_finger_print_authentication_background"
     tools:context=".login">
 
     <View
@@ -25,7 +25,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_user_photo"
+        android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -187,7 +187,7 @@
         android:layout_height="29dp"
         android:onClick="onClick"
         android:text="NOT A MEMBER? REGISTER NOW"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorBackground"
         android:textSize="50px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

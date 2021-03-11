@@ -9,6 +9,15 @@
         <item>Police</item>
     </string-array>
 
+    //Different violation type option for police to add fine
+    <string-array name="fineType">
+        <item>Select Violation Type</item>
+        <item>Speeding Offence</item>
+        <item>Seatbelt Offence</item>
+        <item>Motor Insurance Offence</item>
+        <item>Careless Driving</item>
+    </string-array>
+
     <string name="copy_right" translatable="false">Copyrights %1$d By Rukayat Oyefeso</string>
     <!---->
 

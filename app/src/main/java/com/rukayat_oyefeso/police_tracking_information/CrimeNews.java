@@ -158,18 +158,18 @@ public class CrimeNews extends AppCompatActivity {
 
     public void ClickHome(View view){
         //Redirect activity to detect text
-        redirectActivity(this, MainActivity.class);
+        redirectActivity(this, VehicleOwnerMainActivity.class);
     }
 
     public void ClickUserProfile(View view){
         //Redirect activity to userprofile
-        redirectActivity(this, policeProfile.class);
+        redirectActivity(this, vehicleOwnerProfile.class);
     }
 
-    public void ClickDetectText(View view){
-        //Redirect activity to Detect Text
-        redirectActivity(this, TextRecognizer.class);
-    }
+//    public void ClickDetectText(View view){
+//        //Redirect activity to Detect Text
+//        redirectActivity(this, TextRecognizer.class);
+//    }
 
     public void ClickCrimeNews(View view){
         //Recreate activity

@@ -35,7 +35,7 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'com.google.firebase:firebase-auth:20.0.2'
+    implementation 'com.google.firebase:firebase-auth:20.0.3'
     implementation 'com.google.firebase:firebase-database:19.6.0'
     implementation 'com.firebaseui:firebase-ui-database:6.0.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -67,6 +67,7 @@ dependencies {
 
     //add Firebase ML Kit to project
     implementation 'com.google.firebase:firebase-ml-vision:15.0.0'
+//    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:16.1.3'
 
     implementation 'com.android.support:multidex:1.0.3'
 

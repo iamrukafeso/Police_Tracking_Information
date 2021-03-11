@@ -17,33 +17,54 @@
     <include
         layout="@layout/main_toolbar"/>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/bg_pureblue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/police_profile_image"
-                android:layout_width="285dp"
-                android:layout_height="160dp"
+                android:layout_width="229dp"
+                android:layout_height="128dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:src="@drawable/ic_user_photo"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="72dp"
+                android:src="@drawable/ic_user_photo"
+                app:civ_border_color="#FFF"
+                app:civ_border_width="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
 
-        <Button
-            android:id="@+id/police_ChangeImage"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:text="Change Image"
-            android:layout_gravity="center"
-            tools:ignore="MissingConstraints" />
+            <Button
+                android:id="@+id/police_ChangeImage"
+                android:layout_width="70dp"
+                android:layout_height="38dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="176dp"
+                android:background="@drawable/round_white"
+                android:text="EDIT"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <LinearLayout
         android:layout_width="wrap_content"
@@ -206,9 +227,10 @@
                     android:id="@+id/police_BadgeNo"
                     android:layout_width="143dp"
                     android:layout_height="38dp"
-                    android:text="Badge Number"
+                    android:text="Badge Number: "
                     android:textColor="@color/colorTextPrimary"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    />
 
             </LinearLayout>
 
@@ -271,9 +293,13 @@
                     android:id="@+id/police_AddressEdit"
                     android:layout_width="240dp"
                     android:layout_height="100sp"
-                    android:inputType="textPersonName"
+                    android:textAllCaps="true"
                     android:textColor="@color/colorTextPrimary"
-                    android:text="Address" />
+                    android:text="Address"
+                    android:lines="4"
+                    android:maxLines="4"
+                    android:singleLine="false"
+                    />
 
             </LinearLayout>
 
