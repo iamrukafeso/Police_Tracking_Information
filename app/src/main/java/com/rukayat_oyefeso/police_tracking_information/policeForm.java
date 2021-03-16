@@ -114,7 +114,6 @@ public class policeForm extends AppCompatActivity {
                         addressList = ge.getFromLocation(location.getLatitude(),location.getLongitude(),1);
                         String cityName = addressList.get(0).getAddressLine(0);
 
-
                         if(cityName.contains("County")){
                             String cityArr [] = cityName.split(" ");
                             mPoliceLocation.setText(cityArr[1]);
@@ -127,7 +126,6 @@ public class policeForm extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 }
             }
         });
@@ -171,7 +169,6 @@ public class policeForm extends AppCompatActivity {
             final String police_id = mCurrentUser.getUid();
 
             // used the values in hashMap
-
             HashMap<String,String> policeUser = new HashMap<>();
 
             policeUser.put("location", policeLocation);

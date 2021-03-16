@@ -7,11 +7,11 @@
     tools:context=".addFine">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/vehicle_MainProfile"
+        android:id="@+id/vehicleFineMainProfileFine"
         android:layout_width="89dp"
         android:layout_height="81dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="28dp"
         android:src="@drawable/bill_gates"
         app:civ_border_color="#D3D3D3"
         app:civ_border_width="6dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/displayVehicleName"
+        android:id="@+id/displayVehicleNameFine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -27,11 +27,11 @@
         android:textColor="#494451"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/vehicle_MainProfile"
+        app:layout_constraintStart_toEndOf="@+id/vehicleFineMainProfileFine"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/displayVehicleLastName"
+        android:id="@+id/displayVehicleLastNameFine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -41,7 +41,7 @@
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/displayVehicleName"
+        app:layout_constraintStart_toEndOf="@+id/displayVehicleNameFine"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -51,19 +51,20 @@
         android:layout_marginTop="76dp"
         android:text="Car Reg:"
         android:textColor="#494451"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/vehicle_MainProfile"
+        app:layout_constraintStart_toEndOf="@+id/vehicleFineMainProfileFine"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/carRegFine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="76dp"
         android:text="10-D-1234"
         android:textColor="#494451"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -71,12 +72,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:layout_width="390dp"
-        android:layout_height="430dp"
-        android:layout_marginTop="148dp"
+        android:layout_width="391dp"
+        android:layout_height="439dp"
+        android:layout_marginTop="124dp"
         android:background="@drawable/round_grey"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -94,18 +94,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
+<!--    <Spinner-->
+<!--        android:id="@+id/violationType"-->
+<!--        android:layout_width="339dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:background="@drawable/bg_input"-->
+<!--        android:entries="@array/userTypes"-->
+<!--        android:paddingLeft="54dp"-->
+<!--        android:textColor="#000"-->
+<!--        android:textColorHint="#000"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.222"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView12" />-->
+
     <Spinner
-        android:id="@+id/violationType"
-        android:layout_width="339dp"
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
         android:background="@drawable/bg_input"
-        android:entries="@array/fineType"
         android:paddingLeft="54dp"
+        android:entries="@array/fineType"
         android:textColor="#000"
         android:textColorHint="#000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -121,10 +138,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/violationType" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <MultiAutoCompleteTextView
-        android:id="@+id/multiAutoCompleteTextView"
+        android:id="@+id/multiAutoCompleteTextNote"
         android:layout_width="265dp"
         android:layout_height="200dp"
         android:layout_marginTop="12dp"
@@ -133,7 +150,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.267"
         app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/violationType" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <TextView
         android:id="@+id/textView15"
@@ -146,7 +163,7 @@
         android:textSize="17dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/multiAutoCompleteTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/multiAutoCompleteTextNote" />
 
     <TextView
         android:id="@+id/textView16"
@@ -159,7 +176,7 @@
         android:textSize="17dp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/multiAutoCompleteTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/multiAutoCompleteTextNote" />
 
     <TextView
         android:id="@+id/textView19"
@@ -172,10 +189,10 @@
         android:textSize="17dp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/multiAutoCompleteTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/multiAutoCompleteTextNote" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/txt_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -185,44 +202,45 @@
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/txt_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="4dp"
         android:text="6:30 PM"
-        app:layout_constraintStart_toEndOf="@+id/textView17"
+        app:layout_constraintStart_toEndOf="@+id/txt_date"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <TextView
+        android:id="@+id/finePricePolice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="€ 70"
+        android:text="€ 0"
         android:textColor="#4CAF50"
         android:textSize="22dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView20"
+        app:layout_constraintStart_toEndOf="@+id/txt_time"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="Offence type:  "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView21"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:text="Offence type:  "-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/txt_date" />-->
 
     <ImageView
         android:id="@+id/createFine"
         android:layout_width="107dp"
         android:layout_height="80dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="78dp"
         android:layout_marginEnd="76dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21"
+        app:layout_constraintTop_toBottomOf="@+id/txt_time"
         app:srcCompat="@drawable/ic_createfine"
         tools:ignore="VectorDrawableCompat" />
 
@@ -231,9 +249,9 @@
         android:layout_width="83dp"
         android:layout_height="71dp"
         android:layout_marginStart="104dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="84dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21"
+        app:layout_constraintTop_toBottomOf="@+id/txt_time"
         app:srcCompat="@drawable/ic_cancelfine"
         tools:ignore="VectorDrawableCompat" />
 
@@ -252,11 +270,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:text="Create Fine"
         android:textColor="@color/colorTextPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toEndOf="@+id/textView22"
         app:layout_constraintTop_toBottomOf="@+id/cancelFine" />
 

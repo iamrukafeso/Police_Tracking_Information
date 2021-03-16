@@ -29,7 +29,6 @@ public class DisplayUserInfo extends AppCompatActivity {
     private TextView mFirstUserName, mUserSurname, mUserCarReg, mUserInsurance, mUserInsuranceDate, mUserNCT, mUserRoadTax, mUserAddress;
     private Button mAddFine;
     private CircleImageView mProfileImage;
-
     private DatabaseReference mUserRef, mQuery;
     private FirebaseAuth mAuth;
     private String mUserId;
@@ -66,6 +65,7 @@ public class DisplayUserInfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent aF = new Intent(DisplayUserInfo.this, addFine.class);
+                aF.putExtra("userID", userID);
                 startActivity(aF);
             }
         });
@@ -115,8 +115,6 @@ public class DisplayUserInfo extends AppCompatActivity {
                         Log.i("testImage" , UserImage);
                         // Load the image using picasso
                         Picasso.get().load(UserImage).placeholder(R.drawable.ic_user_photo).into(mProfileImage);
-//
-
                     }
 
                     @Override

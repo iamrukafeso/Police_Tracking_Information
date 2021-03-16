@@ -38,7 +38,7 @@ public class VehicleOwnerMainActivity extends AppCompatActivity {
     private TextView mFirstName, mLastName;
     private CircleImageView mVehicleImage;
 
-//    private FirebaseUser user;
+    //    private FirebaseUser user;
 //    private DatabaseReference reference;
 //    private String userID;
     private FirebaseAuth mAuth;

@@ -54,7 +54,7 @@
                         android:layout_marginTop="4dp"
                         android:text="First name"
                         android:textColor="#494451"
-                        android:textSize="30sp"
+                        android:textSize="25sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/displayName" />
 
@@ -66,7 +66,7 @@
                         android:layout_marginEnd="200dp"
                         android:text="Last name"
                         android:textColor="#494451"
-                        android:textSize="30sp"
+                        android:textSize="25sp"
                         android:textStyle="normal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -78,7 +78,7 @@
                         android:layout_width="87dp"
                         android:layout_height="75dp"
                         android:src="@drawable/bill_gates"
-                        app:civ_border_color="#D3D3D3"
+                        app:civ_border_color="#636363"
                         app:civ_border_width="6dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
