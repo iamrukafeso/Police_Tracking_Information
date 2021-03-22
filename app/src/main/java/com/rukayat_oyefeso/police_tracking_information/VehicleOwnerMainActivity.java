@@ -147,8 +147,8 @@ public class VehicleOwnerMainActivity extends AppCompatActivity {
                 if (!mVehicleImage.equals("default")) {
                     Picasso.get().load(img).placeholder(R.drawable.ic_user_photo).into(mVehicleImage);
                 }
-                mFirstName.setText(name + " ");
-                mLastName.setText(lName);
+                mFirstName.setText(name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase() + " ");
+                mLastName.setText(lName.substring(0, 1).toUpperCase()+ lName.substring(1).toLowerCase() + " ");
             }
 
             @Override

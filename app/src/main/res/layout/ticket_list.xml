@@ -10,12 +10,13 @@
         android:id="@+id/view3"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
-        android:layout_marginTop="44dp"
         android:background="@drawable/ic_ticket"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView5"
@@ -58,10 +59,13 @@
 
     <TextView
         android:id="@+id/fineNote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="55dp"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
+        android:lines="3"
+        android:maxLines="3"
+        android:singleLine="false"
         android:text="Disobeyed the speeding\nlimits of 80Km/ph"
         android:textColor="@color/colorTextSubtitle"
         android:textSize="15dp"
@@ -201,14 +205,14 @@
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="212dp"
         android:text="Penalty / Fine"
         android:textColor="@color/colorTextPrimary"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.851"
+        app:layout_constraintHorizontal_bias="0.823"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

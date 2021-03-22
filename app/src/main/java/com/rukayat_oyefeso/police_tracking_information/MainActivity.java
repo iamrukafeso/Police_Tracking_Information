@@ -1,5 +1,6 @@
 package com.rukayat_oyefeso.police_tracking_information;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -134,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
     private void displayInfo(String userID) {
 
         mVehicleFormRef.child(userID).addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -144,8 +146,8 @@ public class MainActivity extends AppCompatActivity {
                 if (!mPoliceImage.equals("default")) {
                     Picasso.get().load(img).placeholder(R.drawable.ic_user_photo).into(mPoliceImage);
                 }
-                mFirstName.setText(name + " ");
-                mLastName.setText(lName);
+                mFirstName.setText(name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase() + " ");
+                mLastName.setText(lName.substring(0, 1).toUpperCase() + lName.substring(1).toLowerCase() + " ");
 
 //                mUserRef.child(userID).addValueEventListener(new ValueEventListener() {
 //                    @Override

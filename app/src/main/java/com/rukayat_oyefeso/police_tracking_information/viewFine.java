@@ -2,6 +2,7 @@ package com.rukayat_oyefeso.police_tracking_information;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +28,8 @@ public class viewFine extends AppCompatActivity {
     private FirebaseRecyclerAdapter mAdaptor;
     private DatabaseReference mRef;
     private FirebaseAuth mAuth;
-
     private TextView makePayment;
+    private LinearLayoutManager mLayoutManager;
 
 
     @Override
@@ -59,8 +60,13 @@ public class viewFine extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.recyclerViewTicketList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mLayoutManager = new LinearLayoutManager(this);
+        mLayoutManager.setReverseLayout(true);
+        mLayoutManager.setStackFromEnd(true);
 
+        // And set it to RecyclerView
+        recyclerView.setLayoutManager(mLayoutManager);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
@@ -70,6 +76,7 @@ public class viewFine extends AppCompatActivity {
 
         FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<model>().
                 setQuery(mRef, model.class).build();
+
 
         mAdaptor = new FirebaseRecyclerAdapter<model, ViewFineHolder>(options) {
             @NonNull
@@ -102,11 +109,24 @@ public class viewFine extends AppCompatActivity {
                 String fine = model.getvFine();
                 holder.setFine(fine);
 
+                Log.i("typeFine", fine);
+                if(fine.equals("5pt")){
+                   holder.payView.setVisibility(View.INVISIBLE);
+                }
+
+                holder.payView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent payNow = new Intent(viewFine.this, payNow.class);
+                        payNow.putExtra("amount", fine);
+                        startActivity(payNow);
+                    }
+                });
+
             }
         };
         mAdaptor.startListening();
         recyclerView.setAdapter(mAdaptor);
-
 
     }
 
@@ -115,18 +135,19 @@ public class viewFine extends AppCompatActivity {
     public class  ViewFineHolder extends RecyclerView.ViewHolder{
 
         private View mView;
+        private   TextView payView;
+        private TextView mFinePrice;
         public ViewFineHolder(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
 
-            TextView payView = itemView.findViewById(R.id.payNow);
-            payView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent payNow = new Intent(viewFine.this, payNow.class);
-                    startActivity(payNow);
-                }
-            });
+            payView = itemView.findViewById(R.id.payNow);
+//            if(mFinePrice.getText().toString().equals("5pt")){
+//                payView.setVisibility(View.INVISIBLE);
+//            }
+
+
+
         }
 
 
@@ -156,7 +177,7 @@ public class viewFine extends AppCompatActivity {
 
         }
         public void setFine(String fineType){
-            TextView mFinePrice = mView.findViewById(R.id.finePrice);
+             mFinePrice = mView.findViewById(R.id.finePrice);
             mFinePrice.setText(fineType);
 
         }

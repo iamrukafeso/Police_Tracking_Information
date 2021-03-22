@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -60,6 +61,12 @@ public class payNow extends AppCompatActivity {
         setContentView(R.layout.activity_pay_now);
 
         mamountTextview = findViewById(R.id.amountTextView);
+        String amount = getIntent().getStringExtra("amount");
+        assert amount != null;
+        Log.i("AmountPay", amount);
+        String amo [] = amount.split("/");
+        Log.i("amount", amo[1].replace("€",""));
+        mamountTextview.setText(amo[1].replace("€",""));
         dialog = new Dialog(payNow.this);
         dialog.setContentView(R.layout.payment_successful_dialog);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){

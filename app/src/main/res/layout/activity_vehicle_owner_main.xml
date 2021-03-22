@@ -79,7 +79,7 @@
                         android:layout_marginEnd="28dp"
                         android:src="@drawable/bill_gates"
                         app:civ_border_color="#636363"
-                        app:civ_border_width="6dp"
+                        app:civ_border_width="2dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.8"
