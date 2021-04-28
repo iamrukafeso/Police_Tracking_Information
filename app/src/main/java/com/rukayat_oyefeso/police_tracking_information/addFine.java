@@ -82,7 +82,7 @@ public class addFine extends AppCompatActivity {
 //                Toast.makeText(addFine.this, "hello" + mFineType, Toast.LENGTH_SHORT).show();
                 switch (mFineType) {
                     case "Speeding Offence":
-                        mfinePrice.setText("3pt / €80");
+                        mfinePrice.setText("€80");
                         break;
                     case "Seatbelt Offence":
                         mfinePrice.setText("€60");
@@ -91,7 +91,7 @@ public class addFine extends AppCompatActivity {
                         mfinePrice.setText("5pt");
                         break;
                     case "Careless Driving":
-                        mfinePrice.setText("5pt / €5000");
+                        mfinePrice.setText("€5000");
                         break;
                     default:
                         mfinePrice.setText("0");

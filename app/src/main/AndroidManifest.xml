@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
@@ -43,8 +44,7 @@
         <activity android:name=".FingerPrintAuthentication" />
         <activity android:name=".vehicleOwnerProfile" />
         <activity android:name=".Punishments" />
-        <activity android:name=".PayFine" />
-        <activity android:name=".Intro" />
+
         <activity android:name=".DetailedActivity" />
         <activity android:name=".mainToolbar" />
         <activity android:name=".MapActivity" />
@@ -55,6 +55,7 @@
         <activity android:name=".Settings" />
         <activity android:name=".policeProfile" />
         <activity android:name=".searchData" />
+        <activity android:name=".RunService" />
 
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
@@ -69,8 +70,15 @@
         <activity android:name=".VehicleOwnerForm" />
         <activity android:name=".forgetPassword" />
         <activity android:name=".Register" />
+        <activity android:name=".MapsActivity" />
+        <activity android:name=".TrackActivity" />
+
         <activity android:name=".login" />
         <activity android:name=".walkThroughScreen" />
+        <service android:enabled="true"
+
+            android:name="com.rukayat_oyefeso.police_tracking_information.BackgroundLocation" />
+
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -78,8 +86,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".VehicleOwnerMainActivity" />
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTop"/>
+        <activity android:name=".VehicleOwnerMainActivity"
+            android:launchMode="singleTask"/>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />

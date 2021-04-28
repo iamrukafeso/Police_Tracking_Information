@@ -72,11 +72,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:layout_width="391dp"
-        android:layout_height="439dp"
-        android:layout_marginTop="124dp"
+        android:layout_width="373dp"
+        android:layout_height="408dp"
+        android:layout_marginTop="128dp"
         android:background="@drawable/round_grey"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.315"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -94,20 +95,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-<!--    <Spinner-->
-<!--        android:id="@+id/violationType"-->
-<!--        android:layout_width="339dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginTop="4dp"-->
-<!--        android:background="@drawable/bg_input"-->
-<!--        android:entries="@array/userTypes"-->
-<!--        android:paddingLeft="54dp"-->
-<!--        android:textColor="#000"-->
-<!--        android:textColorHint="#000"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.222"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textView12" />-->
+    <!--    <Spinner-->
+    <!--        android:id="@+id/violationType"-->
+    <!--        android:layout_width="339dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_marginTop="4dp"-->
+    <!--        android:background="@drawable/bg_input"-->
+    <!--        android:entries="@array/userTypes"-->
+    <!--        android:paddingLeft="54dp"-->
+    <!--        android:textColor="#000"-->
+    <!--        android:textColorHint="#000"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.222"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/textView12" />-->
 
     <Spinner
         android:id="@+id/spinner"
@@ -117,8 +118,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
         android:background="@drawable/bg_input"
-        android:paddingLeft="54dp"
         android:entries="@array/fineType"
+        android:paddingLeft="54dp"
         android:textColor="#000"
         android:textColorHint="#000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -223,60 +224,59 @@
         app:layout_constraintStart_toEndOf="@+id/txt_time"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView21"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        android:text="Offence type:  "-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/txt_date" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView21"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:text="Offence type:  "-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/txt_date" />-->
 
     <ImageView
         android:id="@+id/createFine"
         android:layout_width="107dp"
         android:layout_height="80dp"
-        android:layout_marginTop="78dp"
-        android:layout_marginEnd="76dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_time"
         app:srcCompat="@drawable/ic_createfine"
-        tools:ignore="VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/cancelFine"
-        android:layout_width="83dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="84dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_time"
-        app:srcCompat="@drawable/ic_cancelfine"
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="8dp"
         android:text="Cancel Fine"
         android:textColor="@color/colorTextPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createFine" />
 
+    <ImageView
+        android:id="@+id/cancelFine"
+        android:layout_width="83dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_time"
+        app:srcCompat="@drawable/ic_cancelfine"
+        tools:ignore="VectorDrawableCompat" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="Create Fine"
         android:textColor="@color/colorTextPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintHorizontal_bias="0.158"
         app:layout_constraintStart_toEndOf="@+id/textView22"
-        app:layout_constraintTop_toBottomOf="@+id/cancelFine" />
+        app:layout_constraintTop_toBottomOf="@+id/createFine" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

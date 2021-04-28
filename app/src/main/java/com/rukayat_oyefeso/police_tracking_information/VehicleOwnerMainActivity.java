@@ -3,9 +3,15 @@ package com.rukayat_oyefeso.police_tracking_information;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
@@ -15,9 +21,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,12 +55,16 @@ public class VehicleOwnerMainActivity extends AppCompatActivity {
 //    private String userID;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
-    private DatabaseReference reference;
     private String userID;
     private DatabaseReference mUserRef, mVehicleFormRef, mVehicleRef;
 
     RelativeLayout mPayFine, mPunishments, mCrimeMain, mProfile;
 
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    private static final  int REQUEST_CODE_PERMISSION =2;
+    String mPermission = android.Manifest.permission.ACCESS_FINE_LOCATION;
+    String value =null;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +75,29 @@ public class VehicleOwnerMainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
+
+        try{
+            if (ActivityCompat.checkSelfPermission(this,mPermission)!= PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this,new String[]{mPermission},REQUEST_CODE_PERMISSION);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        //get user ID and store as string
+        String userId = mUser.getUid();
+        database = FirebaseDatabase.getInstance();
+        myRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        mUserRef = myRef.child(userId);
+
+        Intent myService = new Intent(this, BackgroundLocation.class);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(myService);
+        } else {
+            startService(myService);
+        }
+
 
         mFirstName = findViewById(R.id.displayVehicleName);
         mLastName = findViewById(R.id.displayVehicleLastName);
@@ -126,16 +165,13 @@ public class VehicleOwnerMainActivity extends AppCompatActivity {
             }
         });
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Users");
-
-        final String userId = mUser.getUid();
         displayInfo(userId);
 
     }
 
     private void displayInfo(String userID) {
 
-        reference.child(userID).addValueEventListener(new ValueEventListener() {
+        myRef.child(userID).addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -285,4 +321,6 @@ public class VehicleOwnerMainActivity extends AppCompatActivity {
         //Close drawer
         closeDrawer(drawerLayout);
     }
+
+
 }

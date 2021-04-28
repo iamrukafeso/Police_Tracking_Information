@@ -1,0 +1,5 @@
+Instruction to run the mobile application.
+
+**Requrements**
+	A Physical mobile device or Android emulator from android studio.
+	Download Android studio and run the mobile application.

@@ -119,6 +119,7 @@ public class viewFine extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent payNow = new Intent(viewFine.this, payNow.class);
                         payNow.putExtra("amount", fine);
+                        payNow.putExtra("id", ticketId);
                         startActivity(payNow);
                     }
                 });

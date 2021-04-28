@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         mTrackMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent searchIntent = new Intent(MainActivity.this,MapActivity.class);
+                Intent searchIntent = new Intent(MainActivity.this,TrackActivity.class);
                 startActivity(searchIntent);
             }
         });

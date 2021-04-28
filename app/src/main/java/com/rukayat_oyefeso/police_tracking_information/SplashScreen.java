@@ -61,7 +61,7 @@ public class SplashScreen extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-        else if (mCurrentUser != null) {
+        else {
             String userId = mCurrentUser.getUid();
 
             mUserDatabase.child(userId).addValueEventListener(new ValueEventListener() {

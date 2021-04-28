@@ -2,6 +2,7 @@ package com.rukayat_oyefeso.police_tracking_information;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,7 +40,8 @@ public class login extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private ProgressDialog mProgDialog;
-
+    private static final  int REQUEST_CODE_PERMISSION =2;
+    String mPermission = android.Manifest.permission.ACCESS_FINE_LOCATION;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,13 @@ public class login extends AppCompatActivity {
         mProgDialog = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
 
+        try{
+            if (ActivityCompat.checkSelfPermission(this,mPermission)!= PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this,new String[]{mPermission},REQUEST_CODE_PERMISSION);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         // load the login animation
         smalltobig = AnimationUtils.loadAnimation(this, R.anim.smalltobig);
         btta = AnimationUtils.loadAnimation(this, R.anim.btta);

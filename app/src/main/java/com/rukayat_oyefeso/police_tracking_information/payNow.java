@@ -17,6 +17,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.stripe.android.ApiResultCallback;
@@ -53,7 +56,6 @@ public class payNow extends AppCompatActivity {
     private Stripe stripe;
     private static Dialog dialog, dialog2;
     private TextView mamountTextview;
-
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +64,12 @@ public class payNow extends AppCompatActivity {
 
         mamountTextview = findViewById(R.id.amountTextView);
         String amount = getIntent().getStringExtra("amount");
+
         assert amount != null;
         Log.i("AmountPay", amount);
-        String amo [] = amount.split("/");
-        Log.i("amount", amo[1].replace("€",""));
-        mamountTextview.setText(amo[1].replace("€",""));
+        String[] amo = amount.split("/");
+        Log.i("amount", amo[0].replace("€",""));
+        mamountTextview.setText(amo[0].replace("€",""));
         dialog = new Dialog(payNow.this);
         dialog.setContentView(R.layout.payment_successful_dialog);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
@@ -91,6 +94,7 @@ public class payNow extends AppCompatActivity {
         okay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss();
                 Intent ok = new Intent(payNow.this, VehicleOwnerMainActivity.class);
                 startActivity(ok);
                 finish();
@@ -221,7 +225,7 @@ public class payNow extends AppCompatActivity {
         }
     }
 
-    private static final class PaymentResultCallback
+    private final class PaymentResultCallback
             implements ApiResultCallback<PaymentIntentResult> {
         @NonNull private final WeakReference<payNow> activityRef;
 
@@ -247,6 +251,14 @@ public class payNow extends AppCompatActivity {
 //                        "Payment completed",
 //                        gson.toJson(paymentIntent)
 //                );
+
+
+                String id = getIntent().getStringExtra("id").toString();
+                DatabaseReference mRef;
+                FirebaseAuth mAuth;
+                mAuth = FirebaseAuth.getInstance();
+                mRef = FirebaseDatabase.getInstance().getReference().child("Fine").child(mAuth.getUid());
+                mRef.child(id).removeValue();
                 dialog.show();
 
             } else if (status == PaymentIntent.Status.RequiresPaymentMethod) {
